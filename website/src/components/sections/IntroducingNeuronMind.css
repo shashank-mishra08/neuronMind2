@@ -44,7 +44,7 @@
   position: relative;
   max-width: 1100px;
   margin: 0 auto;
-  padding-bottom: var(--spacing-32);
+  padding-bottom: var(--spacing-16);
 }
 
 .why-card-wrapper {
@@ -196,12 +196,15 @@
 /* --- FOOTER STATEMENT --- */
 .why-footer {
   text-align: center;
-  padding-top: var(--spacing-32);
+  padding-top: var(--spacing-12);
 }
 
 .why-closing-statement {
-  font-size: clamp(var(--font-size-3xl), 5vw, var(--font-size-5xl));
-  font-weight: 500;
-  color: var(--color-text-primary);
-  line-height: 1.3;
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--color-primary-teal), var(--color-primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  line-height: 1.4;
 }

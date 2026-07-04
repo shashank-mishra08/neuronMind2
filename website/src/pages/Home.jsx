@@ -4,9 +4,7 @@ import {
   OperationsBreakdown,
   IntroducingNeuronMind,
   Industries,
-  WhyChooseUs,
-  Leadership,
-  Insights
+  Leadership
 } from '../components/sections';
 
 function Home() {
@@ -18,8 +16,6 @@ function Home() {
       <IntroducingNeuronMind />
       <Industries />
       <Leadership />
-      <WhyChooseUs />
-      <Insights />
     </>
   );
 }
