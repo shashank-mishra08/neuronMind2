@@ -1,0 +1,310 @@
+.contact-page-wrapper {
+  background-color: var(--color-white);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--spacing-32);
+  /* Leave space for navbar */
+}
+
+/* Subtle Grid Background */
+.contact-bg-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* IMAGE_12: Decorative background layer */
+.contact-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  background-image: url('/image12.png');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: multiply;
+  /* or soft-light depending on image */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.contact-main {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16) 0;
+}
+
+@media (min-width: 1024px) {
+  .contact-container {
+    grid-template-columns: 45% 55%;
+    align-items: center;
+    padding: var(--spacing-24) 0;
+  }
+}
+
+/* --- LEFT COLUMN: EDITORIAL --- */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary-teal);
+  margin-bottom: var(--spacing-6);
+  display: block;
+}
+
+.contact-headline {
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--spacing-8);
+}
+
+.contact-lead {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-12);
+  max-width: 500px;
+}
+
+/* Info Cards */
+.contact-info-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.contact-info-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+  background-color: var(--color-white);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  box-shadow: 0 4px 15px -5px rgba(0, 0, 0, 0.03);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.contact-info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.info-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: rgba(24, 154, 119, 0.05);
+  color: var(--color-primary-teal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-tertiary);
+}
+
+.info-value {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* --- RIGHT COLUMN: FORM & ILLUSTRATION --- */
+.contact-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12) 0;
+}
+
+.contact-illustration-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: background 0.1s ease;
+}
+
+.contact-illustration {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.5;
+}
+
+@keyframes floatLoop {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: floatLoop 5s ease-in-out infinite;
+}
+
+/* Form Container - Transparent approach */
+.contact-form-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  /* Transparent container: inputs float as glass over the animated illustration */
+  padding: var(--spacing-8) 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  /* Glass: semi-transparent so the animated illustration/glow shows through */
+  background-color: rgba(255, 255, 255, 0.45);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px -12px rgba(44, 46, 51, 0.12);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--color-text-tertiary);
+  opacity: 0.7;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-primary-teal);
+  background-color: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 0 0 4px rgba(24, 154, 119, 0.12);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-submit-btn {
+  background: var(--color-primary-teal);
+  color: var(--color-white);
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+  margin-top: var(--spacing-2);
+}
+
+.contact-submit-btn:hover {
+  background: #158264;
+  /* slightly darker teal */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -5px rgba(24, 154, 119, 0.3);
+}
+
+.contact-submit-btn:active {
+  transform: translateY(0);
+}
+
+.form-secondary-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin-top: var(--spacing-2);
+}
+
+/* --- EDITORIAL FOOTER --- */
+.contact-editorial-footer {
+  text-align: center;
+  padding: var(--spacing-32) 0 var(--spacing-48);
+}
+
+.contact-editorial-footer p {
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
