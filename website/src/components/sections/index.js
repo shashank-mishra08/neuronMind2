@@ -1,0 +1,13 @@
+export { default as HeroPlaceholder } from './HeroPlaceholder';
+export { default as LeadershipExperience } from './LeadershipExperience';
+export { default as HealthcareChallenges } from './HealthcareChallenges';
+export { default as TraditionalAutomation } from './TraditionalAutomation';
+export { default as IntroducingNeuronMind } from './IntroducingNeuronMind';
+export { default as Solutions } from './Solutions';
+export { default as HowItWorks } from './HowItWorks';
+export { default as Industries } from './Industries';
+export { default as OperationalScenarios } from './OperationalScenarios';
+export { default as WhyChooseUs } from './WhyChooseUs';
+export { default as Leadership } from './Leadership';
+export { default as Insights } from './Insights';
+export { default as Contact } from './Contact';

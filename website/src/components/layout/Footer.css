@@ -1,0 +1,29 @@
+.footer {
+  background-color: var(--color-light-gray);
+  padding: var(--spacing-16) 0 var(--spacing-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.footer-brand h2 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-2);
+}
+
+.footer-brand p {
+  font-size: var(--font-size-base);
+  margin-bottom: 0;
+}
+
+.footer-copyright {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding-top: var(--spacing-8);
+  border-top: 1px solid var(--color-border);
+}

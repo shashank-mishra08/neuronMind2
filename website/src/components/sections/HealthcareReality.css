@@ -1,0 +1,147 @@
+.reality-section {
+  background-color: var(--color-surface);
+  padding: var(--spacing-24) 0 var(--spacing-32);
+}
+
+.reality-header {
+  text-align: center;
+  margin-bottom: var(--spacing-24);
+}
+
+.reality-eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary-teal);
+  margin-bottom: var(--spacing-6);
+}
+
+.reality-title {
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.reality-cards-wrapper {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: var(--spacing-16);
+}
+
+.sticky-card {
+  position: sticky;
+  margin-bottom: var(--spacing-8);
+  background-color: var(--color-white);
+  border-radius: 24px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: transform var(--transition-normal);
+}
+
+.card-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8);
+}
+
+@media (min-width: 1024px) {
+  .card-content {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--spacing-16);
+    gap: var(--spacing-12);
+  }
+}
+
+.card-left h3 {
+  font-size: var(--font-size-3xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-6);
+}
+
+.card-left p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.card-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-8);
+  border: 1px solid var(--color-border);
+}
+
+.mini-workflow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+.workflow-step-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.workflow-step {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-full);
+  padding: var(--spacing-2) var(--spacing-6);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  text-align: center;
+}
+
+.workflow-connector {
+  width: 1px;
+  height: 24px;
+  background-color: var(--color-border);
+  position: relative;
+}
+
+.workflow-connector .particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-primary-teal);
+  border-radius: 50%;
+  left: -1.5px;
+  top: 0;
+  opacity: 0;
+  animation: flowDownMini 2s linear infinite;
+}
+
+@keyframes flowDownMini {
+  0% { top: 0; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.reality-footer {
+  text-align: center;
+  margin-top: var(--spacing-32);
+  padding-top: var(--spacing-16);
+  border-top: 1px solid var(--color-border);
+}
+
+.reality-insight {
+  font-size: clamp(var(--font-size-2xl), 4vw, var(--font-size-4xl));
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}

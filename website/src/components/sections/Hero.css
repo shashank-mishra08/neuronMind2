@@ -1,0 +1,90 @@
+.hero-section {
+  position: relative;
+  padding: calc(var(--spacing-32) + var(--spacing-16)) 0 var(--spacing-16);
+  background-color: var(--color-background);
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 55% 45%;
+    gap: var(--spacing-8);
+  }
+}
+
+.hero-eyebrow {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-6);
+}
+
+.hero-headline {
+  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-6);
+  max-width: 95%;
+  letter-spacing: -0.02em;
+}
+
+.hero-description {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-8);
+  max-width: 90%;
+  font-weight: 300;
+}
+
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+/* Override standard btn-primary specifically for Hero to use the gradient */
+.hero-cta-row .btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+}
+
+.hero-cta-row .btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(24, 154, 119, 0.2);
+}
+
+.hero-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

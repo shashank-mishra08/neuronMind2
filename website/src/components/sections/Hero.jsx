@@ -1,0 +1,40 @@
+import Container from '../layout/Container';
+import HeroVisualization from '../ui/HeroVisualization';
+import TrustStrip from '../ui/TrustStrip';
+import './Hero.css';
+
+const Hero = () => {
+  return (
+    <>
+      <section id="hero" className="hero-section">
+        <div className="hero-bg-pattern"></div>
+        <Container>
+          <div className="hero-grid">
+            <div className="hero-content fade-up">
+              <div className="hero-eyebrow">
+                Enterprise Agentic AI for US Healthcare
+              </div>
+              <h1 className="hero-headline">
+                Build Intelligent Healthcare Operations, Not More Software.
+              </h1>
+              <p className="hero-description">
+                NeuronMind helps healthcare organizations orchestrate Prior Authorization, Clinical Documentation, Revenue Cycle, Claims Processing and other administrative workflows through an intelligent operational layer powered by Agentic AI.
+              </p>
+              <div className="hero-cta-row">
+                <a href="#contact" className="btn btn-primary">Book Discovery Call</a>
+                <a href="#platform" className="btn btn-secondary">Explore Platform</a>
+              </div>
+            </div>
+            
+            <div className="hero-visual fade-left" style={{ animationDelay: '0.2s' }}>
+              <HeroVisualization />
+            </div>
+          </div>
+        </Container>
+      </section>
+      <TrustStrip />
+    </>
+  );
+};
+
+export default Hero;
