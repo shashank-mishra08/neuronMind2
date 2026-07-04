@@ -47,7 +47,7 @@
   align-items: center;
   gap: var(--spacing-2);
   font-family: var(--font-family-display);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   font-weight: 700;
   color: var(--color-primary-blue);
   letter-spacing: -0.02em;
@@ -58,9 +58,13 @@
 }
 
 .navbar-logo-img {
-  height: 32px;
+  height: 48px;
   width: auto;
   display: block;
+}
+
+.logo-color-accent {
+  color: var(--color-primary-teal);
 }
 
 .navbar-links {

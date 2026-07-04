@@ -20,7 +20,7 @@ const Navbar = () => {
       <Container className="navbar-container">
         <Link to="/" className="navbar-logo">
           <img src="/neruoMindlogo.png" alt="NeuronMind" className="navbar-logo-img" />
-          <span className="navbar-logo-text">NeuronMind</span>
+          <span className="navbar-logo-text"><span className="logo-color-accent">Neuron</span>Mind</span>
         </Link>
         <nav className="navbar-links">
           <a href="/#solutions">Solutions</a>
