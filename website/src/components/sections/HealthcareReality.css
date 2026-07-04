@@ -1,5 +1,5 @@
 .reality-section {
-  background-color: var(--color-surface);
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-muted-teal) 100%);
   padding: var(--spacing-24) 0 var(--spacing-32);
 }
 
@@ -34,12 +34,12 @@
 .sticky-card {
   position: sticky;
   margin-bottom: var(--spacing-8);
-  background-color: var(--color-white);
-  border-radius: 24px;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-lg);
+  background: linear-gradient(145deg, #ffffff 0%, #f4f9fa 100%);
+  border-radius: 32px;
+  border: 1px solid rgba(24, 154, 119, 0.15);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08), 0 10px 30px -10px rgba(24, 154, 119, 0.08);
   overflow: hidden;
-  transition: transform var(--transition-normal);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .card-content {
@@ -51,85 +51,131 @@
 
 @media (min-width: 1024px) {
   .card-content {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 55% 45%;
     padding: var(--spacing-16);
     gap: var(--spacing-12);
   }
 }
 
-.card-left h3 {
-  font-size: var(--font-size-3xl);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-6);
+.card-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.card-left p {
+.card-eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-4);
+}
+
+.card-title-gradient {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-4);
+  background: linear-gradient(135deg, var(--color-primary-teal) 0%, var(--color-primary-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.card-description {
   font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
   line-height: 1.6;
-  margin-bottom: 0;
+  margin-bottom: var(--spacing-6);
+}
+
+.card-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--spacing-8) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.card-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.bullet-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-primary-teal);
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+
+.card-link:hover {
+  opacity: 0.8;
+}
+
+.card-link .arrow {
+  transition: transform var(--transition-fast);
+}
+
+.card-link:hover .arrow {
+  transform: translateX(4px);
 }
 
 .card-right {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-surface);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-8);
-  border: 1px solid var(--color-border);
-}
-
-.mini-workflow {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3);
   width: 100%;
 }
 
-.workflow-step-wrapper {
+/* --- NEW PREMIUM ABSTRACT ILLUSTRATIONS --- */
+
+.illustration-canvas {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, #fcfdfd 0%, #f5f8f9 100%);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), 0 20px 40px -15px rgba(0, 0, 0, 0.08);
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
-
-.workflow-step {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-full);
-  padding: var(--spacing-2) var(--spacing-6);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  box-shadow: var(--shadow-sm);
-  width: 100%;
-  text-align: center;
-}
-
-.workflow-connector {
-  width: 1px;
-  height: 24px;
-  background-color: var(--color-border);
+  justify-content: center;
   position: relative;
+  overflow: hidden;
 }
 
-.workflow-connector .particle {
+.canvas-glow {
   position: absolute;
-  width: 4px;
-  height: 4px;
-  background-color: var(--color-primary-teal);
-  border-radius: 50%;
-  left: -1.5px;
-  top: 0;
-  opacity: 0;
-  animation: flowDownMini 2s linear infinite;
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
+  background: radial-gradient(circle at center, rgba(24, 154, 119, 0.15) 0%, rgba(36, 124, 168, 0.05) 40%, transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
 }
 
-@keyframes flowDownMini {
-  0% { top: 0; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+.card-illustration-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.08));
 }
 
 .reality-footer {

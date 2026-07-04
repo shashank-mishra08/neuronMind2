@@ -17,9 +17,10 @@ const Navbar = () => {
   return (
     <header className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
       <Container className="navbar-container">
-        <div className="navbar-logo">
-          NeuronMind
-        </div>
+        <a href="#top" className="navbar-logo">
+          <img src="/neruoMindlogo.png" alt="NeuronMind" className="navbar-logo-img" />
+          <span className="navbar-logo-text">NeuronMind</span>
+        </a>
         <nav className="navbar-links">
           <a href="#solutions">Solutions</a>
           <a href="#industries">Industries</a>

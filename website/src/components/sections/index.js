@@ -1,7 +1,7 @@
 export { default as HeroPlaceholder } from './HeroPlaceholder';
 export { default as LeadershipExperience } from './LeadershipExperience';
 export { default as HealthcareChallenges } from './HealthcareChallenges';
-export { default as TraditionalAutomation } from './TraditionalAutomation';
+export { default as OperationsBreakdown } from './OperationsBreakdown';
 export { default as IntroducingNeuronMind } from './IntroducingNeuronMind';
 export { default as Solutions } from './Solutions';
 export { default as HowItWorks } from './HowItWorks';

@@ -1,31 +1,65 @@
 import Container from '../layout/Container';
 import './HealthcareReality.css';
 
+const CheckmarkIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="bullet-icon">
+    <rect width="24" height="24" rx="12" fill="var(--color-primary-teal)" fillOpacity="0.1"/>
+    <path d="M16 8L10.5 14L8 11" stroke="var(--color-primary-teal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const cards = [
   {
+    id: 'prior-auth',
+    eyebrow: "Care Coordination",
     title: "Prior Authorization",
-    description: "Clinical teams often spend valuable time coordinating payer requirements, collecting documentation and tracking authorization status across disconnected systems. Administrative work grows while treatment timelines become more difficult to manage.",
-    visualText: "EMR → Clinical Notes → Insurance Rules → Authorization Request → Human Review",
+    description: "Clinical teams often spend valuable time coordinating payer requirements, collecting documentation and tracking authorization status across disconnected systems.",
+    bullets: [
+      "Manual data collection across disconnected EMRs and payer portals",
+      "Delayed treatment timelines due to opaque authorization rules",
+      "High administrative burden reducing clinical capacity"
+    ],
+    linkText: "Explore Authorization Intelligence",
+    image: "image07 (1).png"
   },
   {
+    id: 'clinical-doc',
+    eyebrow: "Clinical Operations",
     title: "Clinical Documentation",
-    description: "Clinical information is generated continuously, but transforming conversations into structured documentation remains a time-consuming operational task that impacts physicians and care teams.",
-    visualText: "Conversation → Clinical Context → SOAP Draft → Physician Review → EMR",
+    description: "Clinical information is generated continuously, but transforming conversations into structured documentation remains a time-consuming operational task.",
+    bullets: [
+      "Physician burnout from after-hours chart completion",
+      "Inconsistent structured data extraction from clinical conversations",
+      "Delayed billing cycles due to incomplete or inaccurate notes"
+    ],
+    linkText: "Explore Documentation Intelligence",
+    image: "image08 (1).png"
   },
   {
+    id: 'revenue-cycle',
+    eyebrow: "Financial Operations",
     title: "Revenue Cycle Management",
-    description: "Billing, coding, claims and finance teams operate across multiple systems, creating fragmented workflows and limited visibility throughout the revenue cycle.",
-    visualText: "Encounter → Coding → Claims → Payment → Reporting",
+    description: "Billing, coding, claims and finance teams operate across multiple systems, creating fragmented workflows and limited visibility.",
+    bullets: [
+      "Siloed communication between clinical coding and finance teams",
+      "Missed revenue opportunities due to coding inaccuracies",
+      "Lack of end-to-end operational visibility across the claim lifecycle"
+    ],
+    linkText: "Explore Revenue Intelligence",
+    image: "image09 (1).png"
   },
   {
+    id: 'claims-eligibility',
+    eyebrow: "Payer Operations",
     title: "Claims & Eligibility",
     description: "Claims validation, eligibility checks and payer requirements often require repetitive manual coordination between multiple enterprise systems.",
-    visualText: "Patient → Eligibility → Claims Validation → Submission → Status Tracking",
-  },
-  {
-    title: "Referral Management",
-    description: "Managing referrals across providers, specialists and scheduling teams often depends on manual communication, making coordination difficult and reducing operational visibility.",
-    visualText: "Referral → Eligibility → Specialist → Appointment → Completion",
+    bullets: [
+      "Repetitive manual checks across multiple external payer portals",
+      "High denial rates due to preventable eligibility data errors",
+      "Time-consuming claim rework, validation and appeals processes"
+    ],
+    linkText: "Explore Claims Intelligence",
+    image: "image10 (1).png"
   }
 ];
 
@@ -52,21 +86,27 @@ const HealthcareReality = () => {
             >
               <div className="card-content">
                 <div className="card-left">
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
+                  <span className="card-eyebrow">{card.eyebrow}</span>
+                  <h3 className="card-title-gradient">{card.title}</h3>
+                  <p className="card-description">{card.description}</p>
+                  
+                  <ul className="card-bullets">
+                    {card.bullets.map((bullet, idx) => (
+                      <li key={idx}>
+                        <CheckmarkIcon />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a href="#" className="card-link">
+                    {card.linkText} <span className="arrow">→</span>
+                  </a>
                 </div>
                 <div className="card-right">
-                  <div className="mini-workflow">
-                    {card.visualText.split(' → ').map((step, idx, arr) => (
-                      <div key={idx} className="workflow-step-wrapper">
-                        <div className="workflow-step">{step}</div>
-                        {idx < arr.length - 1 && (
-                          <div className="workflow-connector">
-                            <div className="particle" style={{ animationDelay: `${idx * 0.4}s` }}></div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                  <div className="illustration-canvas">
+                    <div className="canvas-glow"></div>
+                    <img src={`/${card.image}`} alt={card.title} className="card-illustration-image" />
                   </div>
                 </div>
               </div>

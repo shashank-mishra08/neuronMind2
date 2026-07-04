@@ -1,6 +1,4 @@
 import Container from '../layout/Container';
-import HeroVisualization from '../ui/HeroVisualization';
-import TrustStrip from '../ui/TrustStrip';
 import './Hero.css';
 
 const Hero = () => {
@@ -27,12 +25,15 @@ const Hero = () => {
             </div>
             
             <div className="hero-visual fade-left" style={{ animationDelay: '0.2s' }}>
-              <HeroVisualization />
+              <img 
+                src="/heroSection.jpeg" 
+                alt="NeuronMind Healthcare Architecture" 
+                className="hero-screenshot-img"
+              />
             </div>
           </div>
         </Container>
       </section>
-      <TrustStrip />
     </>
   );
 };

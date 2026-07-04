@@ -2,7 +2,7 @@ import GlobalLayout from './components/layout/GlobalLayout';
 import Hero from './components/sections/Hero';
 import HealthcareReality from './components/sections/HealthcareReality';
 import {
-  TraditionalAutomation,
+  OperationsBreakdown,
   IntroducingNeuronMind,
   Solutions,
   HowItWorks,
@@ -19,7 +19,7 @@ function App() {
     <GlobalLayout>
       <Hero />
       <HealthcareReality />
-      <TraditionalAutomation />
+      <OperationsBreakdown />
       <IntroducingNeuronMind />
       <Solutions />
       <HowItWorks />
