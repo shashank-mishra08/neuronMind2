@@ -211,16 +211,6 @@ const Industries = () => {
           </div>
         )}
 
-        {/* Workflow Diagram Placeholder */}
-        {activeStudy.workflowImage && activeStudy.cards.length > 0 && (
-          <div className="case-workflow-diagram fade-up">
-            <div className="workflow-placeholder">
-              <span>Workflow Image Placeholder</span>
-              <p>Please provide or upload the actual diagram image.</p>
-            </div>
-          </div>
-        )}
-
       </Container>
     </section>
   );
