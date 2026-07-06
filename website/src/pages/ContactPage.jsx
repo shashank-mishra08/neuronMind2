@@ -58,7 +58,7 @@ const ContactPage = () => {
                 </div>
                 <div className="info-content">
                   <span className="info-label">Email</span>
-                  <span className="info-value">hello@neuronmind.ai</span>
+                  <span className="info-value">anilbajpai1987@gmail.com</span>
                 </div>
               </div>
 

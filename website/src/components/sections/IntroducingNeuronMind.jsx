@@ -83,6 +83,15 @@ const IntroducingNeuronMind = () => {
                 </div>
               );
             })}
+
+            <div className={`deck-scroll-hint ${activeIndex >= whyCards.length - 1 ? 'is-hidden' : ''}`} aria-hidden="true">
+              <span className="deck-scroll-hint-label">Scroll</span>
+              <span className="deck-scroll-hint-dot">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </span>
+            </div>
           </div>
 
           <div className="why-track deck-track" aria-hidden="true">
