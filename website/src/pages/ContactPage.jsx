@@ -116,6 +116,7 @@ const ContactPage = () => {
             </div>
 
             <div className="contact-form-container">
+              <h2 className="contact-form-title">Send us a message</h2>
               <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
                 <div className="form-group">
                   <label htmlFor="fullName">Full Name</label>
