@@ -9,8 +9,8 @@
 }
 
 .reality-eyebrow {
-  font-size: var(--font-size-xs);
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-primary-teal);
@@ -32,7 +32,6 @@
 }
 
 .sticky-card {
-  position: sticky;
   margin-bottom: var(--spacing-8);
   background: linear-gradient(145deg, #ffffff 0%, #f4f9fa 100%);
   border-radius: 32px;
@@ -40,6 +39,15 @@
   box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.08), 0 10px 30px -10px rgba(24, 154, 119, 0.08);
   overflow: hidden;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+/* Desktop keeps the sticky card-deck (unchanged behaviour) */
+@media (min-width: 1024px) {
+  .sticky-card {
+    position: sticky;
+    top: calc(15vh + var(--i) * 20px);
+    z-index: calc(var(--i) + 1);
+  }
 }
 
 .card-content {
@@ -190,4 +198,114 @@
   font-weight: 500;
   color: var(--color-primary-blue);
   line-height: 1.3;
+}
+
+/* ---------- Mobile: pinned crossfade deck (positioning from deck.css) ---------- */
+@media (max-width: 1023px) {
+  /* Narrower, centered deck on phones */
+  .reality-cards-wrapper {
+    max-width: 560px;
+    padding-bottom: 0;
+  }
+
+  /* Card fills the pinned stage; content scrolls inside it */
+  .reality-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    transform-origin: center;
+    /* Re-declare crossfade transition so it wins over the base card transition */
+    transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* The card's content scrolls inside the fixed-height card */
+  .card-content {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    padding: var(--spacing-6);
+    gap: var(--spacing-6);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(24, 154, 119, 0.35) transparent;
+  }
+
+  .card-content::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .card-content::-webkit-scrollbar-thumb {
+    background: rgba(24, 154, 119, 0.35);
+    border-radius: 10px;
+  }
+
+  /* Image-first and compact so text gets the room */
+  .card-right {
+    order: -1;
+  }
+
+  .illustration-canvas {
+    aspect-ratio: 16 / 10;
+    max-height: 160px;
+    border-radius: 16px;
+  }
+
+  /* Soft fade at the bottom edge hints there is more to scroll */
+  .sticky-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(248, 250, 251, 0), rgba(248, 250, 251, 0.95));
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 0 0 24px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .reality-section {
+    padding: var(--spacing-16) 0 var(--spacing-24);
+  }
+
+  .reality-header {
+    margin-bottom: var(--spacing-12);
+  }
+
+  .reality-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .card-eyebrow {
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-2);
+  }
+
+  .card-title-gradient {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .card-description {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .card-bullets {
+    margin-bottom: var(--spacing-6);
+    gap: var(--spacing-3);
+  }
+
+  .card-bullets li {
+    font-size: var(--font-size-sm);
+  }
+
+  .card-link {
+    font-size: var(--font-size-sm);
+  }
+
+  .illustration-canvas {
+    max-height: 140px;
+  }
 }

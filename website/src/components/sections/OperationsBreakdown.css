@@ -88,7 +88,6 @@
 }
 
 .breakdown-card {
-  position: relative;
   /* Use a pure white background for the floating glass look */
   background-color: #ffffff;
   /* Delicate border to define the card edge against white background */
@@ -97,15 +96,16 @@
   overflow: hidden;
   box-shadow: 0 15px 35px rgba(0,0,0, 0.05), 0 5px 15px rgba(0,0,0, 0.03);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  
-  /* STICKY STACKING MAGIC */
-  position: sticky;
-  /* Top offset calculates where the card stops. Each card stops 40px lower than the previous */
-  top: calc(15vh + (var(--card-index) * 40px));
-  /* Ensure stacking order */
-  z-index: var(--card-index);
-  /* Added margin bottom for spacing between cards when not sticky */
   margin-bottom: var(--spacing-12);
+}
+
+/* Desktop keeps the sticky stacking (unchanged) */
+@media (min-width: 1024px) {
+  .breakdown-card {
+    position: sticky;
+    top: calc(15vh + (var(--card-index) * 40px));
+    z-index: var(--card-index);
+  }
 }
 
 .breakdown-card:hover {
@@ -192,4 +192,52 @@
   line-height: 1.7;
   margin-bottom: 0;
   font-weight: 400;
+}
+
+
+
+@media (max-width: 767px) {
+  .breakdown-section {
+    padding: var(--spacing-16) 0;
+  }
+
+  .breakdown-layout {
+    gap: var(--spacing-12);
+  }
+
+  .breakdown-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .breakdown-lead {
+    max-width: 100%;
+    margin-bottom: var(--spacing-8);
+    font-size: var(--font-size-base);
+  }
+
+  .breakdown-insight-text {
+    font-size: var(--font-size-lg);
+  }
+
+  .card-visual-wrapper {
+    height: 170px;
+  }
+
+  .card-watermark {
+    font-size: 110px;
+    top: -6px;
+    right: -8px;
+  }
+
+  .breakdown-card-body {
+    padding: var(--spacing-6);
+  }
+
+  .breakdown-card-title {
+    font-size: 18px;
+  }
+
+  .breakdown-card-desc {
+    font-size: var(--font-size-sm);
+  }
 }

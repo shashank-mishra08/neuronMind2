@@ -14,6 +14,7 @@
   
   --color-text-primary: var(--color-graphite);
   --color-text-secondary: var(--color-graphite-light);
+  --color-text-tertiary: #8a8f99;
   --color-background: #f7fbfb;
   --color-surface: var(--color-light-gray);
   
@@ -24,12 +25,14 @@
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
+  --font-size-md: 1.0625rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 2rem;
   --font-size-4xl: 2.5rem;
   --font-size-5xl: 3.5rem;
+  --font-size-6xl: 4.5rem;
   
   /* Layout & Rhythm */
   --spacing-1: 0.25rem;
@@ -42,6 +45,7 @@
   --spacing-16: 4rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
+  --spacing-48: 12rem;
   
   --container-max-width: 1320px;
   

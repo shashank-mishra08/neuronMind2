@@ -57,31 +57,34 @@ const OperationsBreakdown = () => {
 
           {/* Right Column: Scrolling Cards */}
           <div className="breakdown-cards-container">
-            {cards.map((card, i) => (
-              <article
-                key={i}
-                className="breakdown-card fade-up"
-                style={{ 
-                  '--card-index': i,
-                }}
-              >
-                <div className="card-watermark">0{i + 1}</div>
-                <div className="card-visual-wrapper">
-                  <div className="card-visual-bg"></div>
-                  <img
-                    src={card.image}
-                    alt=""
-                    className="breakdown-illustration-img"
-                    loading="lazy"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div className="breakdown-card-body">
-                  <h3 className="breakdown-card-title">{card.title}</h3>
-                  <p className="breakdown-card-desc">{card.description}</p>
-                </div>
-              </article>
-            ))}
+            <div className="breakdown-cards-stage">
+              {cards.map((card, i) => {
+                return (
+                  <article
+                    key={i}
+                    className="breakdown-card fade-up"
+                    style={{ '--card-index': i }}
+                  >
+                    <div className="card-watermark">0{i + 1}</div>
+                    <div className="card-visual-wrapper">
+                      <div className="card-visual-bg"></div>
+                      <img
+                        src={card.image}
+                        alt=""
+                        className="breakdown-illustration-img"
+                        loading="lazy"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div className="breakdown-card-body">
+                      <h3 className="breakdown-card-title">{card.title}</h3>
+                      <p className="breakdown-card-desc">{card.description}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+
           </div>
 
         </div>

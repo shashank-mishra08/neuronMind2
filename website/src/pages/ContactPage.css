@@ -308,3 +308,39 @@
   color: var(--color-text-primary);
   line-height: 1.3;
 }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 1023px) {
+  .contact-page-wrapper {
+    padding-top: var(--spacing-24);
+  }
+
+  .contact-container {
+    gap: var(--spacing-12);
+    padding: var(--spacing-12) 0;
+  }
+
+  /* Fade the backdrop illustration further so glass inputs stay legible on small screens */
+  .contact-illustration {
+    opacity: 0.28;
+  }
+
+  .contact-editorial-footer {
+    padding: var(--spacing-24) 0 var(--spacing-16);
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-right {
+    padding: var(--spacing-4) 0;
+  }
+
+  .contact-form-container {
+    padding: var(--spacing-4) 0;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 14px 16px;
+  }
+}

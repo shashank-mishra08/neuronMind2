@@ -263,3 +263,47 @@
   font-size: var(--font-size-lg);
   margin-bottom: var(--spacing-2);
 }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 767px) {
+  .case-studies-section {
+    padding: var(--spacing-16) 0 var(--spacing-24);
+  }
+
+  .case-header {
+    margin-bottom: var(--spacing-12);
+  }
+
+  .case-title {
+    font-size: clamp(var(--font-size-2xl), 7vw, var(--font-size-3xl));
+  }
+
+  .case-description {
+    font-size: var(--font-size-base);
+  }
+
+  .case-flow-container {
+    gap: var(--spacing-8);
+    padding: var(--spacing-4) 0;
+  }
+
+  .case-card-content {
+    padding: var(--spacing-5, var(--spacing-4));
+  }
+
+  .case-card-title {
+    font-size: 18px;
+  }
+
+  .case-card-text,
+  .case-card-bullets li {
+    font-size: var(--font-size-sm);
+  }
+
+  /* Slim the vertical label bar so it doesn't dominate narrow cards */
+  .card-accent-bar {
+    padding: var(--spacing-4) var(--spacing-1);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+  }
+}

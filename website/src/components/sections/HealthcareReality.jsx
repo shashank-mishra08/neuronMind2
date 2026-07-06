@@ -1,4 +1,5 @@
 import Container from '../layout/Container';
+import useActiveCardIndex from '../../hooks/useActiveCardIndex';
 import './HealthcareReality.css';
 
 const CheckmarkIcon = () => (
@@ -64,6 +65,8 @@ const cards = [
 ];
 
 const HealthcareReality = () => {
+  const { activeIndex, setRef } = useActiveCardIndex(cards.length);
+
   return (
     <section id="reality" className="reality-section">
       <Container>
@@ -77,41 +80,52 @@ const HealthcareReality = () => {
           </h2>
         </div>
 
-        <div className="reality-cards-wrapper">
-          {cards.map((card, i) => (
-            <div 
-              key={i} 
-              className="reality-card sticky-card" 
-              style={{ top: `calc(15vh + ${i * 20}px)`, zIndex: i + 1 }}
-            >
-              <div className="card-content">
-                <div className="card-left">
-                  <span className="card-eyebrow">{card.eyebrow}</span>
-                  <h3 className="card-title-gradient">{card.title}</h3>
-                  <p className="card-description">{card.description}</p>
-                  
-                  <ul className="card-bullets">
-                    {card.bullets.map((bullet, idx) => (
-                      <li key={idx}>
-                        <CheckmarkIcon />
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
+        <div className="reality-cards-wrapper deck-wrap">
+          <div className="reality-stage deck-stage">
+            {cards.map((card, i) => {
+              const state = i === activeIndex ? 'is-active' : i < activeIndex ? 'is-past' : '';
+              return (
+                <div
+                  key={i}
+                  className={`reality-card sticky-card deck-card ${state}`}
+                  style={{ '--i': i }}
+                >
+                  <div className="card-content">
+                    <div className="card-left">
+                      <span className="card-eyebrow">{card.eyebrow}</span>
+                      <h3 className="card-title-gradient">{card.title}</h3>
+                      <p className="card-description">{card.description}</p>
 
-                  <a href="#" className="card-link">
-                    {card.linkText} <span className="arrow">→</span>
-                  </a>
-                </div>
-                <div className="card-right">
-                  <div className="illustration-canvas">
-                    <div className="canvas-glow"></div>
-                    <img src={`/${card.image}`} alt={card.title} className="card-illustration-image" />
+                      <ul className="card-bullets">
+                        {card.bullets.map((bullet, idx) => (
+                          <li key={idx}>
+                            <CheckmarkIcon />
+                            <span>{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <a href="#" className="card-link">
+                        {card.linkText} <span className="arrow">→</span>
+                      </a>
+                    </div>
+                    <div className="card-right">
+                      <div className="illustration-canvas">
+                        <div className="canvas-glow"></div>
+                        <img src={`/${card.image}`} alt={card.title} className="card-illustration-image" />
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
+
+          <div className="reality-track deck-track" aria-hidden="true">
+            {cards.map((_, i) => (
+              <span key={i} className="deck-sentinel" ref={setRef(i)} />
+            ))}
+          </div>
         </div>
 
         <div className="reality-footer fade-up">

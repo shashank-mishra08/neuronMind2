@@ -51,21 +51,28 @@
 }
 
 .why-card-wrapper {
-  position: sticky;
   transition: transform var(--transition-slow), opacity var(--transition-slow);
   transform-origin: top center;
   will-change: transform, opacity;
 }
 
-/* The previous cards scale down slightly to create depth */
-.why-card-wrapper.stacked {
-  transform: scale(0.98);
-  opacity: 0.8;
-}
+/* Desktop keeps the original sticky pile with subtle depth (unchanged) */
+@media (min-width: 1024px) {
+  .why-card-wrapper {
+    position: sticky;
+    top: calc(15vh + var(--i) * 30px);
+    z-index: calc(var(--i) + 1);
+  }
 
-.why-card-wrapper.active {
-  transform: scale(1);
-  opacity: 1;
+  .why-card-wrapper.stacked {
+    transform: scale(0.98);
+    opacity: 0.8;
+  }
+
+  .why-card-wrapper.active {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* --- CARD DESIGN --- */
@@ -210,4 +217,60 @@
   -webkit-text-fill-color: transparent;
   color: transparent;
   line-height: 1.4;
+}
+
+/* ---------- Mobile: pinned crossfade deck (positioning from deck.css) ---------- */
+@media (max-width: 1023px) {
+  .why-cards-stack {
+    max-width: 560px;
+    padding-bottom: 0;
+  }
+
+  /* Re-declare crossfade transition and center origin for the deck */
+  .why-card-wrapper {
+    transform-origin: center;
+    transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* The visual card fills the pinned stage; scroll inside if needed */
+  .why-card {
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+/* On touch devices there is no hover — always show the card description */
+@media (hover: none), (max-width: 1023px) {
+  .why-card-desc-wrapper {
+    max-height: none;
+    opacity: 1;
+    margin-top: var(--spacing-4);
+  }
+}
+
+@media (max-width: 767px) {
+  .why-section {
+    padding: var(--spacing-16) 0;
+  }
+
+  .why-header {
+    margin-bottom: var(--spacing-12);
+  }
+
+  .why-card {
+    padding: var(--spacing-6);
+    gap: var(--spacing-6);
+  }
+
+  .why-card-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .why-card-description {
+    font-size: var(--font-size-sm);
+  }
+
+  .why-subtitle {
+    font-size: var(--font-size-lg);
+  }
 }

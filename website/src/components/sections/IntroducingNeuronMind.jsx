@@ -1,5 +1,5 @@
-import { useEffect, useState, useRef } from 'react';
 import Container from '../layout/Container';
+import useActiveCardIndex from '../../hooks/useActiveCardIndex';
 import './IntroducingNeuronMind.css';
 
 const whyCards = [
@@ -30,35 +30,7 @@ const whyCards = [
 ];
 
 const IntroducingNeuronMind = () => {
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
-  const cardRefs = useRef([]);
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '-40% 0px -40% 0px', // Trigger when card is roughly in the middle
-      threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = Number(entry.target.dataset.index);
-          setActiveCardIndex(index);
-        }
-      });
-    }, options);
-
-    cardRefs.current.forEach((card) => {
-      if (card) observer.observe(card);
-    });
-
-    return () => {
-      cardRefs.current.forEach((card) => {
-        if (card) observer.unobserve(card);
-      });
-    };
-  }, []);
+  const { activeIndex, setRef } = useActiveCardIndex(whyCards.length);
 
   return (
     <section id="why-neuronmind" className="why-section">
@@ -75,47 +47,49 @@ const IntroducingNeuronMind = () => {
           </p>
         </header>
 
-        <div className="why-cards-stack">
-          {whyCards.map((card, index) => {
-            // A card is "stacked" behind if it's before the active card
-            const isStacked = index < activeCardIndex;
-            const isActive = index === activeCardIndex;
+        <div className="why-cards-stack deck-wrap">
+          <div className="why-cards-stage deck-stage">
+            {whyCards.map((card, index) => {
+              const isActive = index === activeIndex;
+              const isPast = index < activeIndex;
 
-            return (
-              <div 
-                key={card.id}
-                ref={(el) => cardRefs.current[index] = el}
-                data-index={index}
-                className={`why-card-wrapper ${isStacked ? 'stacked' : ''} ${isActive ? 'active' : ''}`}
-                style={{ 
-                  top: `calc(15vh + ${index * 30}px)`, 
-                  zIndex: index + 1 
-                }}
-              >
-                <div className="why-card">
-                  <div className="why-card-left">
-                    <h3 className="why-card-title">
-                      {card.title}
-                      <span className="title-accent-line"></span>
-                    </h3>
-                    <div className="why-card-desc-wrapper">
-                      <p className="why-card-description">{card.description}</p>
+              return (
+                <div
+                  key={card.id}
+                  className={`why-card-wrapper deck-card ${isPast ? 'stacked is-past' : ''} ${isActive ? 'active is-active' : ''}`}
+                  style={{ '--i': index }}
+                >
+                  <div className="why-card">
+                    <div className="why-card-left">
+                      <h3 className="why-card-title">
+                        {card.title}
+                        <span className="title-accent-line"></span>
+                      </h3>
+                      <div className="why-card-desc-wrapper">
+                        <p className="why-card-description">{card.description}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="why-card-right">
-                    <div className="why-illustration-canvas">
-                      <div className="why-particles"></div>
-                      <img 
-                        src={`/${card.image}`} 
-                        alt={card.title} 
-                        className="why-illustration-image" 
-                      />
+                    <div className="why-card-right">
+                      <div className="why-illustration-canvas">
+                        <div className="why-particles"></div>
+                        <img
+                          src={`/${card.image}`}
+                          alt={card.title}
+                          className="why-illustration-image"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          <div className="why-track deck-track" aria-hidden="true">
+            {whyCards.map((_, i) => (
+              <span key={i} className="deck-sentinel" ref={setRef(i)} />
+            ))}
+          </div>
         </div>
 
         <div className="why-footer fade-up">

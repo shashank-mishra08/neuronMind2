@@ -1,0 +1,65 @@
+/* ============================================================
+   Mobile "pinned crossfade" card deck
+   One card is centered at a time; on scroll the current card
+   shrinks + fades back and disappears while the next fades in.
+   All rules are mobile-only so desktop keeps its own layout.
+   ============================================================ */
+
+@media (max-width: 1023px) {
+  .deck-wrap {
+    position: relative;
+    display: block; /* predictable layout even if the section container is flex */
+  }
+
+  /* The pinned stage: one card-sized viewport that stays put while
+     the sentinel track below it provides the scroll length. */
+  .deck-stage {
+    position: sticky;
+    top: 8vh;
+    height: 82vh;
+    z-index: 1;
+  }
+
+  /* Cards are layered in the same spot */
+  .deck-card {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.04);
+    transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .deck-card:not(.is-active) {
+    pointer-events: none;
+  }
+
+  .deck-card.is-active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 3;
+  }
+
+  /* Already-seen cards recede into the background and vanish */
+  .deck-card.is-past {
+    opacity: 0;
+    transform: scale(0.82) translateY(-4vh);
+    z-index: 1;
+  }
+
+  /* Invisible scroll track that drives the active index */
+  .deck-track {
+    position: relative;
+  }
+
+  .deck-sentinel {
+    display: block;
+    height: 78vh;
+  }
+}
+
+/* Desktop: the deck machinery is inert — sections keep their own layout */
+@media (min-width: 1024px) {
+  .deck-track {
+    display: none;
+  }
+}
