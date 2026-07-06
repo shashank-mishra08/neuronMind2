@@ -1,4 +1,5 @@
 import Container from '../layout/Container';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
@@ -19,7 +20,7 @@ const Hero = () => {
                 NeuronMind helps healthcare organizations orchestrate Prior Authorization, Clinical Documentation, Revenue Cycle, Claims Processing and other administrative workflows through an intelligent operational layer powered by Agentic AI.
               </p>
               <div className="hero-cta-row">
-                <a href="#contact" className="btn btn-primary">Book Discovery Call</a>
+                <Link to="/contact" className="btn btn-primary">Book Discovery Call</Link>
                 <a href="#platform" className="btn btn-secondary">Explore Platform</a>
               </div>
             </div>

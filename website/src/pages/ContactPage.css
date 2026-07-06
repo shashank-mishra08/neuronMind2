@@ -331,16 +331,46 @@
 }
 
 @media (max-width: 767px) {
+  .contact-headline {
+    font-size: 32px;
+  }
+
+  .contact-lead {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .contact-info-card {
+    padding: var(--spacing-4);
+    gap: var(--spacing-4);
+  }
+
+  .info-value {
+    word-break: break-word;
+    font-size: var(--font-size-sm);
+  }
+
   .contact-right {
     padding: var(--spacing-4) 0;
+    overflow: hidden;
   }
 
   .contact-form-container {
     padding: var(--spacing-4) 0;
+    max-width: 100%;
   }
 
   .form-group input,
   .form-group textarea {
     padding: 14px 16px;
+  }
+
+  .contact-submit-btn {
+    padding: 14px 20px;
+    font-size: var(--font-size-sm);
+  }
+
+  .contact-editorial-footer p {
+    font-size: 24px;
   }
 }

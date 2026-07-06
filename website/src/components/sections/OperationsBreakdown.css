@@ -191,14 +191,90 @@
   color: var(--color-text-secondary);
   line-height: 1.7;
   margin-bottom: 0;
-  font-weight: 400;
 }
 
+/* ---------- Mobile: depth-based sequential cinematic transition ---------- */
+@media (max-width: 1023px) {
+  .depth-wrap {
+    position: relative;
+    display: block;
+  }
 
+  .depth-stage {
+    position: sticky;
+    top: 15vh;
+    height: 60vh;
+    z-index: 1;
+  }
+
+  .depth-card {
+    position: absolute;
+    inset: 0;
+    margin: auto !important;
+    height: max-content;
+    max-height: 100%;
+    display: flex !important;
+    flex-direction: column;
+    opacity: 0 !important;
+    transform: translateY(40px) scale(0.96) !important;
+    filter: blur(0px) !important;
+    transition: opacity 0.7s cubic-bezier(0.33, 1, 0.68, 1) !important,
+                transform 0.7s cubic-bezier(0.33, 1, 0.68, 1) !important,
+                filter 0.7s cubic-bezier(0.33, 1, 0.68, 1) !important;
+    z-index: 2;
+    pointer-events: none;
+    will-change: transform, opacity, filter;
+  }
+
+  .depth-card.is-active {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    filter: blur(0px) !important;
+    z-index: 3;
+    pointer-events: auto;
+    transition-delay: 0.15s !important;
+  }
+
+  .depth-card.is-past {
+    opacity: 0.30 !important;
+    transform: translateY(-20px) scale(0.90) !important;
+    filter: blur(3px) !important;
+    z-index: 1;
+    transition-delay: 0s !important;
+  }
+
+  .depth-track {
+    position: relative;
+    margin-top: -50vh;
+    margin-bottom: -20vh; /* Cuts off the extra track so it unsticks sooner */
+  }
+
+  .depth-sentinel {
+    display: block;
+    height: 60vh;
+  }
+
+  .breakdown-card-body {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .depth-track {
+    display: none;
+  }
+}
 
 @media (max-width: 767px) {
   .breakdown-section {
-    padding: var(--spacing-16) 0;
+    padding-top: var(--spacing-16);
+    padding-bottom: 0;
+  }
+
+  .breakdown-cards-container {
+    padding-bottom: 0;
   }
 
   .breakdown-layout {
@@ -206,7 +282,8 @@
   }
 
   .breakdown-title {
-    font-size: var(--font-size-2xl);
+    font-size: 32px;
+    line-height: 1.2;
   }
 
   .breakdown-lead {
@@ -220,7 +297,7 @@
   }
 
   .card-visual-wrapper {
-    height: 170px;
+    height: 220px;
   }
 
   .card-watermark {

@@ -7,7 +7,7 @@ const Footer = () => {
       <Container>
         <div className="footer-content">
           <div className="footer-brand">
-            <h2>NeuronMind</h2>
+            <h2><span className="logo-color-accent">Neuron</span>Mind</h2>
             <p>Enterprise Workflow Intelligence for Healthcare.</p>
           </div>
           <div className="footer-copyright">

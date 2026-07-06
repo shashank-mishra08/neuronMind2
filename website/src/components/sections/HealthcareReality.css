@@ -216,6 +216,9 @@
     transform-origin: center;
     /* Re-declare crossfade transition so it wins over the base card transition */
     transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+    height: max-content;
+    max-height: 100%;
+    margin: auto;
   }
 
   /* The card's content scrolls inside the fixed-height card */

@@ -1,4 +1,5 @@
 import Container from '../layout/Container';
+import useActiveCardIndex from '../../hooks/useActiveCardIndex';
 import './OperationsBreakdown.css';
 
 const cards = [
@@ -25,6 +26,8 @@ const cards = [
 ];
 
 const OperationsBreakdown = () => {
+  const { activeIndex, setRef } = useActiveCardIndex(cards.length);
+
   return (
     <section id="operations-breakdown" className="breakdown-section">
       <Container>
@@ -56,13 +59,14 @@ const OperationsBreakdown = () => {
           </div>
 
           {/* Right Column: Scrolling Cards */}
-          <div className="breakdown-cards-container">
-            <div className="breakdown-cards-stage">
+          <div className="breakdown-cards-container depth-wrap">
+            <div className="breakdown-cards-stage depth-stage">
               {cards.map((card, i) => {
+                const state = i === activeIndex ? 'is-active' : i < activeIndex ? 'is-past' : 'is-next';
                 return (
                   <article
                     key={i}
-                    className="breakdown-card fade-up"
+                    className={`breakdown-card fade-up depth-card ${state}`}
                     style={{ '--card-index': i }}
                   >
                     <div className="card-watermark">0{i + 1}</div>
@@ -85,6 +89,11 @@ const OperationsBreakdown = () => {
               })}
             </div>
 
+            <div className="depth-track" aria-hidden="true">
+              {cards.map((_, i) => (
+                <span key={i} className="depth-sentinel" ref={setRef(i)} />
+              ))}
+            </div>
           </div>
 
         </div>

@@ -7,25 +7,25 @@ const whyCards = [
     id: 'healthcare-expertise',
     title: "Healthcare Expertise",
     description: "Purpose-built for the operational realities of U.S. healthcare, from prior authorization and revenue cycle management to clinical documentation and payer coordination.",
-    image: "image_06.png"
+    image: "image13.png"
   },
   {
     id: 'agentic-ai',
     title: "Agentic AI by Design",
     description: "Our solutions leverage autonomous AI agents that reason, coordinate and adapt across complex workflows instead of automating isolated tasks.",
-    image: "image_06.png"
+    image: "image14.png"
   },
   {
     id: 'enterprise-integration',
     title: "Enterprise Integration",
     description: "NeuronMind integrates with existing enterprise systems, preserving current technology investments while extending operational intelligence across the organization.",
-    image: "image_06.png"
+    image: "image15.png"
   },
   {
     id: 'human-centered',
     title: "Human-Centered Delivery",
     description: "Every solution is designed to augment healthcare teams, keeping clinicians and operational leaders in control while reducing administrative burden.",
-    image: "image_06.png"
+    image: "image16.png"
   }
 ];
 
