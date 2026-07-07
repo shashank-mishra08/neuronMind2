@@ -2,7 +2,7 @@
   position: relative;
   padding: var(--spacing-32) 0 var(--spacing-24);
   background-color: transparent;
-  overflow: hidden;
+  overflow: clip; /* clip instead of hidden — doesn't create scroll container that breaks Safari sticky */
   border-bottom: 1px solid var(--color-border);
   min-height: 85vh;
   display: flex;

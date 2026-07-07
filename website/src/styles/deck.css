@@ -24,8 +24,12 @@
   .deck-card {
     position: absolute;
     inset: 0;
-    opacity: 0;
-    transform: scale(1.04);
+    opacity: 0.001; /* 0.001 instead of 0 — prevents Safari from removing element from GPU paint pipeline */
+    -webkit-transform: scale(1.04) translate3d(0, 0, 0); /* translate3d forces GPU layer in WebKit */
+    transform: scale(1.04) translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden; /* keeps layer alive in Safari compositor */
+    backface-visibility: hidden;
+    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -35,14 +39,16 @@
 
   .deck-card.is-active {
     opacity: 1;
-    transform: scale(1);
+    -webkit-transform: scale(1) translate3d(0, 0, 0);
+    transform: scale(1) translate3d(0, 0, 0);
     z-index: 3;
   }
 
   /* Already-seen cards recede into the background and vanish */
   .deck-card.is-past {
-    opacity: 0;
-    transform: scale(0.82) translateY(-4vh);
+    opacity: 0.001; /* Safari-safe: never fully 0 */
+    -webkit-transform: scale(0.82) translateY(-4vh) translate3d(0, 0, 0);
+    transform: scale(0.82) translateY(-4vh) translate3d(0, 0, 0);
     z-index: 1;
   }
 
