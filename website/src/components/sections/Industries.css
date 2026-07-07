@@ -330,8 +330,27 @@
     padding: var(--spacing-4) 0;
   }
 
+  /* Cinematic Framer Motion Flow */
+  .cinematic-mobile-flow {
+    padding: 0;
+    height: 300vh; /* Scroll distance for 3 cards */
+    position: relative;
+    gap: 0;
+  }
+  
+  .cinematic-stage {
+    gap: 0;
+    position: sticky;
+    top: 15vh;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
   .case-card-content {
-    padding: var(--spacing-5, var(--spacing-4));
+    padding: var(--spacing-5) var(--spacing-4);
   }
 
   .case-card-title {
@@ -349,8 +368,4 @@
     font-size: 10px;
     letter-spacing: 0.05em;
   }
-}
-
-letter-spacing: 0.05em;
-}
 }
