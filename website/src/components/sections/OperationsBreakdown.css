@@ -129,7 +129,9 @@
 
 .card-visual-wrapper {
   position: relative;
-  height: 320px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,8 +204,8 @@
 
   .depth-stage {
     position: sticky;
-    top: 15vh;
-    height: 60vh;
+    top: 10vh;
+    height: 80vh;
     z-index: 1;
     display: grid;
     place-items: center;
@@ -213,7 +215,7 @@
     grid-area: 1 / 1;
     width: 100%;
     position: relative;
-    max-height: 100%;
+    max-height: 90vh; /* changed from 100% to ensure it has enough space on short viewports without clipping at 60vh */
     display: flex !important;
     flex-direction: column;
     opacity: 0.001 !important; /* Safari-safe: never fully 0 */
