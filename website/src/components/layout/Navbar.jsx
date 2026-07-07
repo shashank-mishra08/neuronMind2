@@ -34,7 +34,7 @@ const Navbar = () => {
 
         <nav className="navbar-links">
           <a href="/#solutions">Solutions</a>
-          <a href="/#industries">Industries</a>
+          <a href="/#why-neuronmind">Why Us</a>
           <a href="/#insights">Insights</a>
           <a href="/#about">About</a>
           <Link to="/contact">Contact</Link>
@@ -61,7 +61,7 @@ const Navbar = () => {
       <div className={`navbar-mobile-panel ${menuOpen ? 'is-open' : ''}`}>
         <nav className="navbar-mobile-links">
           <a href="/#solutions" onClick={closeMenu}>Solutions</a>
-          <a href="/#industries" onClick={closeMenu}>Industries</a>
+          <a href="/#why-neuronmind" onClick={closeMenu}>Why Us</a>
           <a href="/#insights" onClick={closeMenu}>Insights</a>
           <a href="/#about" onClick={closeMenu}>About</a>
           <Link to="/contact" onClick={closeMenu}>Contact</Link>
