@@ -1,7 +1,7 @@
 .workflow-arc-container {
   position: relative;
   width: 100%;
-  padding: var(--spacing-24) 0 var(--spacing-32);
+  padding: var(--spacing-24) 0 var(--spacing-8);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -21,22 +21,30 @@
 
 .desktop-title {
   position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 70%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
 }
 
 .arc-wrapper {
   position: relative;
   width: 100%;
   max-width: 1400px;
-  aspect-ratio: 1400 / 400;
+  aspect-ratio: 1400 / 320;
   margin: 0 auto;
 }
 
 @keyframes fadeUpTitle {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .arc-svg {
@@ -52,7 +60,9 @@
 }
 
 @keyframes drawArc {
-  to { stroke-dashoffset: 0; }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .arc-nodes {
@@ -73,18 +83,44 @@
 }
 
 @keyframes popInNode {
-  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
 }
 
 /* Sequential delays */
-.delay-0 { animation-delay: 0.2s; }
-.delay-1 { animation-delay: 0.5s; }
-.delay-2 { animation-delay: 0.8s; }
-.delay-3 { animation-delay: 1.1s; }
-.delay-4 { animation-delay: 1.4s; }
-.delay-5 { animation-delay: 1.7s; }
-.delay-6 { animation-delay: 2.0s; }
-.delay-7 { animation-delay: 2.3s; }
+.delay-0 {
+  animation-delay: 0.2s;
+}
+
+.delay-1 {
+  animation-delay: 0.5s;
+}
+
+.delay-2 {
+  animation-delay: 0.8s;
+}
+
+.delay-3 {
+  animation-delay: 1.1s;
+}
+
+.delay-4 {
+  animation-delay: 1.4s;
+}
+
+.delay-5 {
+  animation-delay: 1.7s;
+}
+
+.delay-6 {
+  animation-delay: 2.0s;
+}
+
+.delay-7 {
+  animation-delay: 2.3s;
+}
 
 .arc-node-content {
   position: relative;
@@ -129,13 +165,23 @@
 }
 
 @keyframes spinRing {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spinRingReverse {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(-360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 .arc-node-label {
@@ -152,14 +198,21 @@
 /* Mobile adjustments: Rotating Dial */
 @media (max-width: 900px) {
   .workflow-arc-container {
-    padding-bottom: var(--spacing-16);
+    padding: 0;
   }
-  
+
   .mobile-title {
+    position: absolute;
+    top: 68%;
+    /* Move down slightly */
+    left: 34%;
+    /* Move left slightly */
+    transform: translate(-50%, -50%);
     font-size: 36px;
-    margin-bottom: var(--spacing-16);
+    margin: 0;
+    z-index: 5;
   }
-  
+
   .arc-mobile-wrapper {
     position: relative;
     width: 100%;
@@ -167,16 +220,16 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
   .mobile-dial-container {
     position: relative;
     width: 100%;
     max-width: 400px;
-    height: 400px;
+    height: 235px;
     margin: 0 auto;
     overflow: hidden;
   }
-  
+
   .arc-svg-mobile {
     position: absolute;
     top: 0;
@@ -185,7 +238,7 @@
     height: 100%;
     z-index: 1;
   }
-  
+
   .mobile-dial-nodes {
     position: absolute;
     top: 0;
@@ -194,7 +247,7 @@
     height: 100%;
     z-index: 2;
   }
-  
+
   .mobile-dial-node {
     position: absolute !important;
     left: 50%;
@@ -203,7 +256,7 @@
     animation: none;
     opacity: 1;
   }
-  
+
   .mobile-scroll-overlay {
     position: absolute;
     inset: 0;
@@ -212,7 +265,7 @@
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .mobile-scroll-overlay::-webkit-scrollbar {
     display: none;
   }

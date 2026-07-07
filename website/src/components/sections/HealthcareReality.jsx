@@ -139,8 +139,7 @@ const HealthcareReality = () => {
 
         <div className="reality-footer fade-up">
           <h3 className="reality-insight">
-            Healthcare has invested in software.<br/>
-            What it still lacks is operational coordination.
+            Healthcare has invested in software. What it still lacks is operational coordination.
           </h3>
         </div>
       </Container>

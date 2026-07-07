@@ -16,10 +16,11 @@
   .deck-stage {
     position: sticky;
     top: 8vh;
-    height: 82vh;
+    height: 65vh;
     z-index: 1;
     display: grid;
-    place-items: center;
+    align-items: end; /* Aligns card to bottom of stage, eliminating the gap to the next section */
+    justify-items: center;
   }
 
   /* Cards are layered in the same spot */
@@ -58,6 +59,7 @@
   /* Invisible scroll track that drives the active index */
   .deck-track {
     position: relative;
+    margin-bottom: -16vh; /* Calibrated for S = 65vh */
   }
 
   .deck-sentinel {

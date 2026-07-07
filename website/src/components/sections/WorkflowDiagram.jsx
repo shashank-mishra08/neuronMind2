@@ -47,31 +47,36 @@ const WorkflowDiagram = () => {
     setScrollProgress(progress * (nodes.length - 1)); // 0 to 7
   };
 
+  // Shared gradient definition so it works on both mobile and desktop
+  const GradientDefs = () => (
+    <defs>
+      <linearGradient id="arc-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="rgba(36, 124, 168, 0.1)" />
+        <stop offset="50%" stopColor="var(--color-primary-teal)" />
+        <stop offset="100%" stopColor="rgba(36, 124, 168, 0.1)" />
+      </linearGradient>
+    </defs>
+  );
+
   return (
     <div className="workflow-arc-container fade-up">
-      
+
       {/* Desktop Wrapper */}
       {!isMobile && (
         <div className="arc-wrapper">
           {/* Desktop SVG Arc Background */}
-          <svg className="arc-svg" viewBox="0 0 1400 400" preserveAspectRatio="none">
-            <path 
-              className="arc-path" 
-              d="M 50,250 Q 700,-100 1350,250" 
-              fill="none" 
-              stroke="url(#arc-gradient)" 
-              strokeWidth="3" 
+          <svg className="arc-svg" viewBox="0 0 1400 320" preserveAspectRatio="none">
+            <GradientDefs />
+            <path
+              className="arc-path"
+              d="M 50,250 Q 700,-100 1350,250"
+              fill="none"
+              stroke="url(#arc-gradient)"
+              strokeWidth="3"
               strokeDasharray="1800"
               strokeDashoffset="1800"
               strokeLinecap="round"
             />
-            <defs>
-              <linearGradient id="arc-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(36, 124, 168, 0.1)" />
-                <stop offset="50%" stopColor="var(--color-primary-teal)" />
-                <stop offset="100%" stopColor="rgba(36, 124, 168, 0.1)" />
-              </linearGradient>
-            </defs>
           </svg>
 
           {/* Desktop Nodes */}
@@ -80,16 +85,16 @@ const WorkflowDiagram = () => {
               // Calculate position along the Quadratic Bezier curve
               // P0 = (50, 250), P1 = (700, -100), P2 = (1350, 250)
               const t = 1 - (index / (nodes.length - 1)); // 1 to 0 (right to left)
-              
+
               const oneMinusT = 1 - t;
               const x = Math.pow(oneMinusT, 2) * 50 + 2 * oneMinusT * t * 700 + Math.pow(t, 2) * 1350;
               const y = Math.pow(oneMinusT, 2) * 250 + 2 * oneMinusT * t * -100 + Math.pow(t, 2) * 250;
-              
+
               const leftPct = (x / 1400) * 100;
-              const topPct = (y / 400) * 100;
+              const topPct = (y / 320) * 100;
 
               return (
-                <div 
+                <div
                   key={node.id}
                   className={`arc-node delay-${index}`}
                   style={{ left: `${leftPct}%`, top: `${topPct}%` }}
@@ -102,7 +107,7 @@ const WorkflowDiagram = () => {
               );
             })}
           </div>
-          
+
           {/* Title placed at the bottom for Desktop */}
           <h2 className="arc-title desktop-title">Workflow</h2>
         </div>
@@ -111,68 +116,69 @@ const WorkflowDiagram = () => {
       {/* Mobile Wrapper */}
       {isMobile && (
         <div className="arc-mobile-wrapper">
-          <h2 className="arc-title mobile-title">Workflow</h2>
-          
           <div className="mobile-dial-container">
+            <h2 className="arc-title mobile-title">Workflow</h2>
+
             {/* Mobile SVG Dial Circle */}
-            <svg className="arc-svg-mobile" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
-              <circle cx="200" cy="350" r="250" fill="none" stroke="url(#arc-gradient)" strokeWidth="2" strokeDasharray="6,6" />
+            <svg className="arc-svg-mobile" viewBox="0 60 400 235" preserveAspectRatio="xMidYMid meet">
+              <GradientDefs />
+              <circle cx="200" cy="350" r="230" fill="none" stroke="url(#arc-gradient)" strokeWidth="2" strokeDasharray="6,6" />
             </svg>
 
             <div className="mobile-dial-nodes">
               {nodes.map((node, index) => {
                 // Workflow starts at EMR (index 7). 
                 // We want EMR to be at angle 0 when scroll is 0.
-                const nodePos = (nodes.length - 1) - index; 
-                const relativePos = nodePos - scrollProgress; 
-                
+                const nodePos = (nodes.length - 1) - index;
+                const relativePos = nodePos - scrollProgress;
+
                 // 1 unit of scroll = 35 degrees of rotation
                 const angleDeg = relativePos * 35;
                 const angleRad = angleDeg * (Math.PI / 180);
-                
+
                 const cx = 200; // Center X of the SVG viewBox
                 const cy = 350; // Center Y of the SVG viewBox
-                const r = 250;  // Radius
-                
+                const r = 230;  // Radius
+
                 // Calculate position on the circle
                 const xPx = cx + r * Math.sin(angleRad);
                 const yPx = cy - r * Math.cos(angleRad);
-                
+
                 // Opacity and scale based on distance from center
                 const distance = Math.abs(relativePos);
                 const opacity = distance > 2.5 ? 0 : 1 - (distance * 0.35);
                 const scale = distance > 2.5 ? 0.5 : 1 - (distance * 0.15);
-                
+
                 return (
-                  <div 
-                    key={node.id} 
+                  <div
+                    key={node.id}
                     className="arc-node mobile-dial-node"
-                    style={{ 
-                      left: `calc(50% + ${r * Math.sin(angleRad)}px)`, 
-                      top: `${yPx}px`,
+                    style={{
+                      left: `${(xPx / 400) * 100}%`,
+                      top: `${((yPx - 60) / 235) * 100}%`,
                       opacity: opacity,
                       transform: `translate(-50%, -50%) scale(${scale})`,
                       pointerEvents: opacity > 0.1 ? 'auto' : 'none',
                       zIndex: Math.round(10 - distance)
                     }}
                   >
-                     <div className="arc-node-content">
-                       <NodeRingSVG />
-                       <div className="arc-node-label">{node.label}</div>
-                     </div>
+                    <div className="arc-node-content">
+                      <NodeRingSVG />
+                      <div className="arc-node-label">{node.label}</div>
+                    </div>
                   </div>
                 );
               })}
             </div>
-            
+
             {/* Invisible Scroll Overlay for Touch Interaction */}
-            <div 
+            <div
               className="mobile-scroll-overlay"
               ref={scrollRef}
               onScroll={handleScroll}
             >
-               {/* 7 steps of scrolling, each 50vw wide */}
-               <div style={{ width: 'calc(100vw + 350vw)', height: '100%' }}></div>
+              {/* 7 steps of scrolling, each 50vw wide */}
+              <div style={{ width: 'calc(100vw + 350vw)', height: '100%' }}></div>
             </div>
           </div>
         </div>

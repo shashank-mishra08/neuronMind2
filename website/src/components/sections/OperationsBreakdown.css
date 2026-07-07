@@ -7,7 +7,7 @@
 .breakdown-layout {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-16);
+  gap: var(--spacing-8);
 }
 
 @media (min-width: 1024px) {
@@ -197,6 +197,14 @@
 
 /* ---------- Mobile: depth-based sequential cinematic transition ---------- */
 @media (max-width: 1023px) {
+  .breakdown-section {
+    padding-bottom: var(--spacing-8);
+  }
+
+  .breakdown-cards-container {
+    padding-bottom: 0;
+  }
+
   .depth-wrap {
     position: relative;
     display: block;
@@ -205,10 +213,11 @@
   .depth-stage {
     position: sticky;
     top: 10vh;
-    height: 80vh;
+    height: 60vh;
     z-index: 1;
     display: grid;
-    place-items: center;
+    align-items: end; /* Aligns card to bottom of stage, eliminating the gap to the next section */
+    justify-items: center;
   }
 
   .depth-card {
@@ -260,7 +269,7 @@
   .depth-track {
     position: relative;
     margin-top: -50vh;
-    margin-bottom: -20vh; /* Cuts off the extra track so it unsticks sooner */
+    margin-bottom: -10vh; /* Calibrated for S = 60vh (M_b = S - 70vh) */
   }
 
   .depth-sentinel {

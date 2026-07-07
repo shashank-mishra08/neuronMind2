@@ -266,6 +266,10 @@
     text-align: left;
   }
 
+  .why-section {
+    padding-top: var(--spacing-8);
+  }
+
   .why-title {
     font-size: 32px;
     /* Slightly larger and more readable on mobile */
