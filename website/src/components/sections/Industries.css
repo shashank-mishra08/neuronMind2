@@ -53,12 +53,16 @@
 
 .case-title {
   font-family: var(--font-family-display);
-  font-size: clamp(var(--font-size-3xl), 4vw, var(--font-size-5xl));
+  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
   font-weight: 700;
-  color: var(--color-text-primary);
   line-height: 1.1;
   margin-bottom: var(--spacing-6);
   letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--color-primary-teal), var(--color-primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .case-description {
@@ -312,7 +316,7 @@
   }
 
   .case-title {
-    font-size: clamp(var(--font-size-2xl), 7vw, var(--font-size-3xl));
+    font-size: clamp(var(--font-size-xl), 6vw, var(--font-size-2xl));
   }
 
   .case-description {

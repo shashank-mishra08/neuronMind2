@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Container from '../layout/Container';
+import WorkflowDiagram from './WorkflowDiagram';
 import './Industries.css';
 
 const caseStudiesData = [
@@ -208,6 +209,11 @@ const Industries = () => {
         )}
 
       </Container>
+
+      {/* Render Workflow Diagram only for Case Study 1 (Prior Authorization) */}
+      {activeStudy.id === 1 && (
+        <WorkflowDiagram />
+      )}
     </section>
   );
 };
