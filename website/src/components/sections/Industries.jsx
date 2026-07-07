@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Container from '../layout/Container';
+import WorkflowDiagram from './WorkflowDiagram';
 import './Industries.css';
 
 const caseStudiesData = [
@@ -167,10 +168,15 @@ const Industries = () => {
                 {/* SVG Connectors (hidden on last item) */}
                 {index < activeStudy.cards.length - 1 && (
                   <svg className={`flow-connector connector-${index}`} viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <defs>
+                      <marker id={`arrowhead-${index}`} markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                        <polygon points="0 0, 6 3, 0 6" fill="var(--color-primary-teal)" />
+                      </marker>
+                    </defs>
                     {index % 2 === 0 ? (
-                       <path d="M10,10 C50,10 50,90 90,90" fill="none" stroke="var(--color-primary-teal)" strokeWidth="2" strokeDasharray="4 4" />
+                       <path className="flow-path" d="M10,20 C50,20 50,80 90,80" fill="none" stroke="var(--color-primary-teal)" strokeWidth="2" strokeDasharray="6 6" markerEnd={`url(#arrowhead-${index})`} />
                     ) : (
-                       <path d="M90,10 C50,10 50,90 10,90" fill="none" stroke="var(--color-primary-teal)" strokeWidth="2" strokeDasharray="4 4" />
+                       <path className="flow-path" d="M90,20 C50,20 50,80 10,80" fill="none" stroke="var(--color-primary-teal)" strokeWidth="2" strokeDasharray="6 6" markerEnd={`url(#arrowhead-${index})`} />
                     )}
                   </svg>
                 )}
@@ -209,6 +215,11 @@ const Industries = () => {
               </div>
             ))}
           </div>
+        )}
+        
+        {/* Render Workflow Diagram for the first case study */}
+        {activeStudy.id === 1 && (
+          <WorkflowDiagram />
         )}
 
       </Container>

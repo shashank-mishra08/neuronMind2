@@ -1,0 +1,225 @@
+.workflow-radar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-16) 0 var(--spacing-32);
+  width: 100%;
+  overflow: hidden; /* Prevent horizontal scroll on small devices */
+}
+
+.radar-wrapper {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* On mobile, scale it down using transform or smaller dimensions */
+@media (max-width: 768px) {
+  .radar-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+.radar-center {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.radar-core {
+  background: linear-gradient(135deg, var(--color-primary-teal), var(--color-primary-blue));
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-white);
+  box-shadow: 0 10px 25px rgba(36, 124, 168, 0.4);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .radar-core {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.radar-core h3 {
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  margin: 0;
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  .radar-core h3 { font-size: 13px; }
+}
+
+.radar-subtitle {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+@media (max-width: 768px) {
+  .radar-subtitle { font-size: 8px; }
+}
+
+.radar-pulse {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-primary-teal);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@media (max-width: 768px) {
+  .radar-pulse {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(3.5); opacity: 0; }
+}
+
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(36, 124, 168, 0.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.ring-inner { width: 45%; height: 45%; }
+.ring-middle { width: 70%; height: 70%; border-style: solid; border-color: rgba(36, 124, 168, 0.05); }
+.ring-outer { width: 100%; height: 100%; }
+
+.radar-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: orbit-spin 60s linear infinite;
+}
+
+.radar-orbit:hover {
+  animation-play-state: paused;
+}
+.radar-orbit:hover .radar-node-wrapper {
+  animation-play-state: paused;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.radar-node-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* translate(-50%, -50%) centers it. Then rotate by angle, then translate outward by orbit radius. */
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-250px) rotate(calc(var(--angle) * -1));
+  animation: orbit-counter-spin 60s linear infinite;
+  transform-origin: center;
+}
+
+@media (max-width: 768px) {
+  .radar-node-wrapper {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-145px) rotate(calc(var(--angle) * -1));
+  }
+}
+
+@keyframes orbit-counter-spin {
+  from { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-250px) rotate(calc(var(--angle) * -1)) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-250px) rotate(calc(var(--angle) * -1)) rotate(-360deg); }
+}
+@media (max-width: 768px) {
+  @keyframes orbit-counter-spin {
+    from { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-145px) rotate(calc(var(--angle) * -1)) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-145px) rotate(calc(var(--angle) * -1)) rotate(-360deg); }
+  }
+}
+
+.radar-node {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: var(--spacing-3) var(--spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: all var(--transition-normal);
+  cursor: default;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .radar-node {
+    padding: var(--spacing-1) var(--spacing-2);
+    gap: 4px;
+  }
+}
+
+.radar-node:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(36, 124, 168, 0.15);
+  border-color: var(--color-primary-teal);
+}
+
+.node-number {
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-primary-teal);
+  background: rgba(24, 154, 119, 0.1);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .node-number {
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.node-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+@media (max-width: 768px) {
+  .node-label {
+    font-size: 11px;
+  }
+}
+
+/* Coloring based on node type */
+.node-ai .node-number { color: var(--color-primary-blue); background: rgba(36, 124, 168, 0.1); }
+.node-ai:hover .radar-node { border-color: var(--color-primary-blue); }
+
+.node-human .node-number { color: #f59e0b; background: rgba(245, 158, 11, 0.1); }
+.node-human:hover .radar-node { border-color: #f59e0b; }
