@@ -81,64 +81,52 @@
 }
 
 /* Connectors */
-.css-connector {
+.svg-connector {
   display: none;
 }
 
 @media (min-width: 768px) {
   .case-flow-container {
-    gap: var(--spacing-16);
+    gap: 0;
+    padding: var(--spacing-12) 0;
   }
 
-  .css-connector {
+  .svg-connector {
     display: block;
     position: absolute;
-    border-style: dashed;
-    border-color: var(--color-primary-teal);
+    width: 200px;
+    height: 90px;
     opacity: 0;
-    animation: fadeInConnector 0.5s forwards;
+    animation: fadeInConnector 0.5s forwards 0.6s;
+    pointer-events: none;
+    z-index: 10;
   }
 
-  .css-connector-right {
-    animation-delay: 0.6s;
+  .svg-connector-right {
     top: 50%;
-    right: -80px;
-    width: 80px;
-    height: 100px;
-    border-width: 2px 2px 0 0;
-    border-top-right-radius: 20px;
+    right: -200px;
   }
 
-  .css-connector-right .arrow-head {
-    position: absolute;
-    bottom: -6px;
-    right: -6px;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid var(--color-primary-teal);
-  }
-
-  .css-connector-left {
-    animation-delay: 1.2s;
+  .svg-connector-left {
     top: 50%;
-    left: -80px;
-    width: 80px;
-    height: 100px;
-    border-width: 2px 0 0 2px;
-    border-top-left-radius: 20px;
+    left: -200px;
   }
 
-  .css-connector-left .arrow-head {
-    position: absolute;
-    bottom: -6px;
-    left: -6px;
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 8px solid var(--color-primary-teal);
+  .connector-path {
+    stroke: var(--color-primary-teal);
+    stroke-width: 2;
+    stroke-dasharray: 6 6;
+    animation: flowData 0.8s linear infinite;
+  }
+
+  .connector-arrow {
+    fill: var(--color-primary-teal);
+  }
+
+  @keyframes flowData {
+    to {
+      stroke-dashoffset: -12;
+    }
   }
 
   @keyframes fadeInConnector {
@@ -156,7 +144,11 @@
 
 @media (min-width: 768px) {
   .case-card-wrapper {
-    width: 65%;
+    width: 45%;
+  }
+
+  .case-card-wrapper:not(:first-child) {
+    margin-top: -60px;
   }
 
   .case-card-wrapper.align-left {
@@ -171,17 +163,26 @@
 /* The Card itself */
 .case-card {
   display: flex;
-  background-color: #f8fafc;
-  border-radius: 16px;
+  background: linear-gradient(145deg, #ffffff 0%, #fcfcfc 100%);
+  border-radius: 24px;
   overflow: clip;
-  /* Safari-safe */
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  transition: transform var(--transition-normal);
+  /* Ultra-Premium Glassy Shadow with an inner highlight */
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.01),
+    0 4px 12px rgba(0,0,0,0.02),
+    0 24px 48px -12px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .case-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 
+    0 1px 1px rgba(0,0,0,0.02),
+    0 8px 16px rgba(0,0,0,0.03),
+    0 32px 64px -16px rgba(0,0,0,0.12),
+    inset 0 1px 0 rgba(255,255,255,1);
 }
 
 /* Accent Bar */
@@ -189,24 +190,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-8) var(--spacing-3);
+  padding: var(--spacing-8) var(--spacing-4);
   color: var(--color-white);
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  font-size: 11px;
   text-transform: uppercase;
+  border-right: 1px solid rgba(0,0,0,0.05);
+  border-radius: 23px 0 0 23px;
 }
 
 .card-problem .card-accent-bar {
-  background-color: #1a4f47;
+  background: linear-gradient(180deg, #13463e 0%, #1a5e53 100%);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .card-solution .card-accent-bar {
-  background-color: var(--color-primary-teal);
+  background: linear-gradient(180deg, var(--color-primary-teal) 0%, #29a08e 100%);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .card-results .card-accent-bar {
-  background-color: var(--color-primary-blue);
+  background: linear-gradient(180deg, var(--color-primary-blue) 0%, #3074ce 100%);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .card-rotated-text {
@@ -217,42 +223,46 @@
 
 /* Card Content */
 .case-card-content {
-  padding: var(--spacing-6) var(--spacing-8);
+  padding: var(--spacing-8) var(--spacing-8);
   flex: 1;
 }
 
 .case-card-header {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
-  margin-bottom: var(--spacing-4);
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-5);
 }
 
 .case-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  font-size: 22px;
   font-family: var(--font-family-display);
   font-weight: 700;
   color: var(--color-primary-teal);
+  background: linear-gradient(135deg, #e6f9f6 0%, #f3fcfb 100%);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.03);
 }
 
 .case-card-title {
   font-family: var(--font-family-display);
-  font-size: 22px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 700;
   color: var(--color-text-primary);
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .case-card-text {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.7;
   margin-bottom: 0;
 }
 
@@ -328,25 +338,6 @@
   .case-flow-container {
     gap: var(--spacing-8);
     padding: var(--spacing-4) 0;
-  }
-
-  /* Cinematic Framer Motion Flow */
-  .cinematic-mobile-flow {
-    padding: 0;
-    height: 300vh; /* Scroll distance for 3 cards */
-    position: relative;
-    gap: 0;
-  }
-  
-  .cinematic-stage {
-    gap: 0;
-    position: sticky;
-    top: 15vh;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
   }
 
   .case-card-content {

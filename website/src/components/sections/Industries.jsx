@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Container from '../layout/Container';
 import WorkflowDiagram from './WorkflowDiagram';
+import CinematicCardFlow from './CinematicCardFlow';
 import './Industries.css';
 
 const caseStudiesData = [
@@ -130,6 +131,16 @@ const Industries = () => {
   const [activeTab, setActiveTab] = useState(1);
   const activeStudy = caseStudiesData.find(study => study.id === activeTab);
 
+  // Mobile detection for cinematic scroll
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mq.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
   return (
     <section id="case-studies" className="case-studies-section">
       <Container>
@@ -157,55 +168,81 @@ const Industries = () => {
 
         {/* Staggered Cards Flow */}
         {activeStudy.cards.length > 0 && (
-          <div className="case-flow-container">
-            {activeStudy.cards.map((card, index) => (
-              <div
-                key={index}
-                className={`case-card-wrapper fade-up ${index % 2 === 0 ? 'align-left' : 'align-right'}`}
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
+          <>
+            {/* Mobile: Cinematic scroll-linked animation */}
+            {isMobile && (
+              <CinematicCardFlow cards={activeStudy.cards} />
+            )}
 
-                {/* CSS Border Connectors (hidden on last item) */}
-                {index < activeStudy.cards.length - 1 && (
-                  <div className={`css-connector css-connector-${index % 2 === 0 ? 'right' : 'left'}`}>
-                    <div className="arrow-head"></div>
-                  </div>
-                )}
+            {/* Desktop: Staggered zigzag layout with SVG connectors */}
+            {!isMobile && (
+              <div className="case-flow-container">
+                {activeStudy.cards.map((card, index) => (
+                  <div
+                    key={index}
+                    className={`case-card-wrapper fade-up ${index % 2 === 0 ? 'align-left' : 'align-right'}`}
+                    style={{ animationDelay: `${index * 0.15}s` }}
+                  >
 
-                <div className={`case-card card-${card.type}`}>
+                    {/* SVG Flow Connectors (hidden on last item) */}
+                    {index < activeStudy.cards.length - 1 && (
+                      <svg 
+                        className={`svg-connector svg-connector-${index % 2 === 0 ? 'right' : 'left'}`} 
+                        viewBox="0 0 200 90" 
+                        fill="none" 
+                        xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none"
+                      >
+                        {index % 2 === 0 ? (
+                          <>
+                            <path className="connector-path" d="M0,0 H180 Q200,0 200,20 V80" />
+                            <polygon className="connector-arrow" points="195,75 205,75 200,85" />
+                          </>
+                        ) : (
+                          <>
+                            <path className="connector-path" d="M200,0 H20 Q0,0 0,20 V80" />
+                            <polygon className="connector-arrow" points="-5,75 5,75 0,85" />
+                          </>
+                        )}
+                      </svg>
+                    )}
 
-                  {/* Left Accent Bar with Rotated Text */}
-                  <div className="card-accent-bar">
-                    <span className="card-rotated-text">{card.label}</span>
-                  </div>
+                  <div className={`case-card card-${card.type}`}>
 
-                  {/* Card Content Area */}
-                  <div className="case-card-content">
-                    <div className="case-card-header">
-                      <span className="case-card-icon">{card.icon}</span>
-                      <h3 className="case-card-title">{card.title}</h3>
+                    {/* Left Accent Bar with Rotated Text */}
+                    <div className="card-accent-bar">
+                      <span className="card-rotated-text">{card.label}</span>
                     </div>
 
-                    {card.content && (
-                      <p className="case-card-text">{card.content}</p>
-                    )}
+                    {/* Card Content Area */}
+                    <div className="case-card-content">
+                      <div className="case-card-header">
+                        <span className="case-card-icon">{card.icon}</span>
+                        <h3 className="case-card-title">{card.title}</h3>
+                      </div>
 
-                    {card.bullets && (
-                      <ul className="case-card-bullets">
-                        {card.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx}>
-                            <span className="bullet-star">*</span>
-                            {bullet}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
+                      {card.content && (
+                        <p className="case-card-text">{card.content}</p>
+                      )}
+
+                      {card.bullets && (
+                        <ul className="case-card-bullets">
+                          {card.bullets.map((bullet, bIdx) => (
+                            <li key={bIdx}>
+                              <span className="bullet-star">*</span>
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-              </div>
-            ))}
-          </div>
+                </div>
+              ))}
+            </div>
+            )}
+          </>
         )}
 
       </Container>
