@@ -18,12 +18,15 @@
     top: 8vh;
     height: 82vh;
     z-index: 1;
+    display: grid;
+    place-items: center;
   }
 
   /* Cards are layered in the same spot */
   .deck-card {
-    position: absolute;
-    inset: 0;
+    grid-area: 1 / 1;
+    width: 100%;
+    position: relative; /* to ensure z-index works, though grid items get z-index anyway */
     opacity: 0.001; /* 0.001 instead of 0 — prevents Safari from removing element from GPU paint pipeline */
     -webkit-transform: scale(1.04) translate3d(0, 0, 0); /* translate3d forces GPU layer in WebKit */
     transform: scale(1.04) translate3d(0, 0, 0);

@@ -205,13 +205,14 @@
     top: 15vh;
     height: 60vh;
     z-index: 1;
+    display: grid;
+    place-items: center;
   }
 
   .depth-card {
-    position: absolute;
-    inset: 0;
-    margin: auto !important;
-    height: max-content;
+    grid-area: 1 / 1;
+    width: 100%;
+    position: relative;
     max-height: 100%;
     display: flex !important;
     flex-direction: column;

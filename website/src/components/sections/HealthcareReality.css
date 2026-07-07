@@ -223,9 +223,8 @@
     transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    height: max-content;
-    max-height: 100%;
-    margin: auto;
+    max-height: 90vh; /* keep a max-height just in case */
+    overflow-y: auto; /* allow scroll if it gets too tall */
   }
 
   /* The card's content scrolls inside the fixed-height card */
