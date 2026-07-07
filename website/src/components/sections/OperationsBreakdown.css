@@ -211,70 +211,40 @@
   }
 
   .depth-stage {
-    position: sticky;
-    top: 10vh;
-    height: 60vh;
-    z-index: 1;
-    display: grid;
-    align-items: end; /* Aligns card to bottom of stage, eliminating the gap to the next section */
-    justify-items: center;
+    position: relative;
+    top: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15vh;
+    padding-bottom: 5vh;
   }
 
   .depth-card {
-    grid-area: 1 / 1;
+    grid-area: auto;
     width: 100%;
-    position: relative;
-    max-height: 90vh; /* changed from 100% to ensure it has enough space on short viewports without clipping at 60vh */
+    position: sticky !important;
+    top: calc(10vh + var(--card-index) * 16px) !important;
+    z-index: calc(var(--card-index) + 1) !important;
+    
+    max-height: 85vh;
     display: flex !important;
     flex-direction: column;
-    opacity: 0.001 !important; /* Safari-safe: never fully 0 */
-    -webkit-transform: translateY(40px) scale(0.96) translate3d(0, 0, 0) !important;
-    transform: translateY(40px) scale(0.96) translate3d(0, 0, 0) !important;
-    -webkit-filter: blur(0px) !important;
-    filter: blur(0px) !important;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: opacity 0.7s cubic-bezier(0.33, 1, 0.68, 1),
-                -webkit-transform 0.7s cubic-bezier(0.33, 1, 0.68, 1),
-                -webkit-filter 0.7s cubic-bezier(0.33, 1, 0.68, 1) !important;
-    transition: opacity 0.7s cubic-bezier(0.33, 1, 0.68, 1),
-                transform 0.7s cubic-bezier(0.33, 1, 0.68, 1),
-                filter 0.7s cubic-bezier(0.33, 1, 0.68, 1) !important;
-    z-index: 2;
-    pointer-events: none;
-    will-change: transform, opacity, filter;
-  }
-
-  .depth-card.is-active {
+    
+    /* Reset JS-driven animations to allow native scroll */
     opacity: 1 !important;
-    -webkit-transform: translateY(0) scale(1) translate3d(0, 0, 0) !important;
-    transform: translateY(0) scale(1) translate3d(0, 0, 0) !important;
-    -webkit-filter: blur(0px) !important;
-    filter: blur(0px) !important;
-    z-index: 3;
-    pointer-events: auto;
-    transition-delay: 0.15s !important;
+    transform: none !important;
+    filter: none !important;
+    pointer-events: auto !important;
+    transition: none !important;
+    
+    /* Enhance stacking feel with top shadow */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.05), 0 15px 35px rgba(0,0,0, 0.05) !important;
   }
 
-  .depth-card.is-past {
-    opacity: 0.30 !important;
-    -webkit-transform: translateY(-20px) scale(0.90) translate3d(0, 0, 0) !important;
-    transform: translateY(-20px) scale(0.90) translate3d(0, 0, 0) !important;
-    -webkit-filter: blur(3px) !important;
-    filter: blur(3px) !important;
-    z-index: 1;
-    transition-delay: 0s !important;
-  }
-
-  .depth-track {
-    position: relative;
-    margin-top: -50vh;
-    margin-bottom: -10vh; /* Calibrated for S = 60vh (M_b = S - 70vh) */
-  }
-
-  .depth-sentinel {
-    display: block;
-    height: 60vh;
+  /* Hide the sentinels and JS track on mobile since we're using native sticky */
+  .depth-track, .depth-sentinel {
+    display: none !important;
   }
 
   .breakdown-card-body {

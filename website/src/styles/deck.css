@@ -14,57 +14,37 @@
   /* The pinned stage: one card-sized viewport that stays put while
      the sentinel track below it provides the scroll length. */
   .deck-stage {
-    position: sticky;
-    top: 8vh;
-    height: 65vh;
-    z-index: 1;
-    display: grid;
-    align-items: end; /* Aligns card to bottom of stage, eliminating the gap to the next section */
-    justify-items: center;
-  }
-
-  /* Cards are layered in the same spot */
-  .deck-card {
-    grid-area: 1 / 1;
-    width: 100%;
-    position: relative; /* to ensure z-index works, though grid items get z-index anyway */
-    opacity: 0.001; /* 0.001 instead of 0 — prevents Safari from removing element from GPU paint pipeline */
-    -webkit-transform: scale(1.04) translate3d(0, 0, 0); /* translate3d forces GPU layer in WebKit */
-    transform: scale(1.04) translate3d(0, 0, 0);
-    -webkit-backface-visibility: hidden; /* keeps layer alive in Safari compositor */
-    backface-visibility: hidden;
-    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-    transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .deck-card:not(.is-active) {
-    pointer-events: none;
-  }
-
-  .deck-card.is-active {
-    opacity: 1;
-    -webkit-transform: scale(1) translate3d(0, 0, 0);
-    transform: scale(1) translate3d(0, 0, 0);
-    z-index: 3;
-  }
-
-  /* Already-seen cards recede into the background and vanish */
-  .deck-card.is-past {
-    opacity: 0.001; /* Safari-safe: never fully 0 */
-    -webkit-transform: scale(0.82) translateY(-4vh) translate3d(0, 0, 0);
-    transform: scale(0.82) translateY(-4vh) translate3d(0, 0, 0);
-    z-index: 1;
-  }
-
-  /* Invisible scroll track that drives the active index */
-  .deck-track {
     position: relative;
-    margin-bottom: -16vh; /* Calibrated for S = 65vh */
+    top: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15vh;
+    padding-bottom: 5vh;
   }
 
-  .deck-sentinel {
-    display: block;
-    height: 78vh;
+  /* Cards stack visually */
+  .deck-card {
+    grid-area: auto;
+    width: 100%;
+    position: sticky !important;
+    top: calc(8vh + var(--i) * 16px) !important;
+    z-index: calc(var(--i) + 1) !important;
+    
+    max-height: 85vh;
+    display: flex !important;
+    flex-direction: column;
+    
+    /* Reset JS-driven animations to allow native scroll */
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    transition: none !important;
+  }
+
+  /* Hide the sentinels and JS track on mobile */
+  .deck-track, .deck-sentinel {
+    display: none !important;
   }
 }
 

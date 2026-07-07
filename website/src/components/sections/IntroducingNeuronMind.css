@@ -279,6 +279,8 @@
   .why-card {
     padding: var(--spacing-6);
     gap: var(--spacing-6);
+    /* Add top shadow to separate stacked cards on mobile */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.05), 0 20px 40px -15px rgba(0, 0, 0, 0.05) !important;
   }
 
   .why-card-title {

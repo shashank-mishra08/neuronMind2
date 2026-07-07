@@ -232,6 +232,9 @@
     backface-visibility: hidden;
     max-height: 90vh; /* keep a max-height just in case */
     overflow-y: auto; /* allow scroll if it gets too tall */
+    
+    /* Add top shadow to separate stacked cards on mobile */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.05), 0 20px 40px -15px rgba(0, 0, 0, 0.05) !important;
   }
 
   /* The card's content scrolls inside the fixed-height card */
