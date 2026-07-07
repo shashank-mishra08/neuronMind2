@@ -12,42 +12,74 @@ const nodes = [
   { id: 8, label: 'Status Monitoring', type: 'action' }
 ];
 
+const NodeRingSVG = () => (
+  <svg className="node-ring-svg" viewBox="0 0 100 100">
+    <defs>
+      <linearGradient id="nodeRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="var(--color-primary-teal)" />
+        <stop offset="100%" stopColor="var(--color-primary-blue)" />
+      </linearGradient>
+    </defs>
+    {/* Outer broken ring */}
+    <circle cx="50" cy="50" r="46" fill="none" stroke="url(#nodeRingGrad)" strokeWidth="1.5" strokeDasharray="160 120" strokeLinecap="round" transform="rotate(-60 50 50)" className="ring-spin-slow" />
+    {/* Inner broken ring */}
+    <circle cx="50" cy="50" r="39" fill="none" stroke="url(#nodeRingGrad)" strokeWidth="1.2" strokeDasharray="100 140" strokeLinecap="round" transform="rotate(130 50 50)" className="ring-spin-fast" />
+  </svg>
+);
+
 const WorkflowDiagram = () => {
   return (
-    <div className="workflow-radar-container fade-up">
-      <div className="radar-wrapper">
+    <div className="workflow-arc-container fade-up">
+      <div className="arc-wrapper">
+        <h2 className="arc-title">Workflow</h2>
         
-        {/* Core Center Hub */}
-        <div className="radar-center">
-          <div className="radar-pulse"></div>
-          <div className="radar-core">
-            <h3>Workflow</h3>
-            <span className="radar-subtitle">Orchestration</span>
-          </div>
-        </div>
+        {/* SVG Arc Background */}
+        <svg className="arc-svg" viewBox="0 0 1000 500" preserveAspectRatio="none">
+          <path 
+            className="arc-path" 
+            d="M 50,450 A 450,450 0 0,1 950,450" 
+            fill="none" 
+            stroke="url(#arc-gradient)" 
+            strokeWidth="3" 
+            strokeDasharray="1414"
+            strokeDashoffset="1414"
+            strokeLinecap="round"
+          />
+          <defs>
+            <linearGradient id="arc-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(36, 124, 168, 0.1)" />
+              <stop offset="50%" stopColor="var(--color-primary-teal)" />
+              <stop offset="100%" stopColor="rgba(36, 124, 168, 0.1)" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-        {/* Concentric Rings for depth */}
-        <div className="radar-ring ring-inner"></div>
-        <div className="radar-ring ring-middle"></div>
-        <div className="radar-ring ring-outer"></div>
-
-        {/* Orbiting Nodes */}
-        <div className="radar-orbit">
+        {/* Nodes along the Arc */}
+        <div className="arc-nodes">
           {nodes.map((node, index) => {
-            // Calculate angle to distribute the 8 nodes evenly (45 degrees apart)
-            const angle = (360 / nodes.length) * index;
-            // Add a slight offset so node 1 starts at the top
-            const finalAngle = angle - 90; 
+            const angleInDegrees = 180 - (index * (180 / (nodes.length - 1)));
+            const angleInRadians = angleInDegrees * (Math.PI / 180);
             
+            // Adjust radius to place nodes perfectly on/above the line
+            const r = 450;
+            const cx = 500;
+            const cy = 450;
+            
+            const x = cx + r * Math.cos(angleInRadians);
+            const y = cy - r * Math.sin(angleInRadians);
+            
+            const leftPct = (x / 1000) * 100;
+            const topPct = (y / 500) * 100;
+
             return (
               <div 
-                key={node.id} 
-                className={`radar-node-wrapper node-${node.type}`}
-                style={{ '--angle': `${finalAngle}deg` }}
+                key={node.id}
+                className={`arc-node delay-${index}`}
+                style={{ left: `${leftPct}%`, top: `${topPct}%` }}
               >
-                <div className="radar-node">
-                  <span className="node-number">0{node.id}</span>
-                  <span className="node-label">{node.label}</span>
+                <div className="arc-node-content">
+                  <NodeRingSVG />
+                  <span className="arc-node-label">{node.label}</span>
                 </div>
               </div>
             );

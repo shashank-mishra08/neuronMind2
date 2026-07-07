@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Container from '../layout/Container';
-import WorkflowDiagram from './WorkflowDiagram';
 import './Industries.css';
 
 const caseStudiesData = [
@@ -27,8 +26,8 @@ const caseStudiesData = [
         label: "Solution",
         icon: (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M8 14C10 14 10.5 10 12 10C13.5 10 14 14 16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8 14C10 14 10.5 10 12 10C13.5 10 14 14 16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         ),
         title: "NeuronMind Approach",
@@ -52,10 +51,10 @@ const caseStudiesData = [
     ],
     workflowImage: "/workflow-diagram-placeholder.png"
   },
-  { 
-    id: 2, 
-    title: "Case Study 2", 
-    description: "Coming soon.", 
+  {
+    id: 2,
+    title: "Case Study 2",
+    description: "Coming soon.",
     cards: [
       {
         type: "problem",
@@ -69,8 +68,8 @@ const caseStudiesData = [
         label: "Solution",
         icon: (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M8 14C10 14 10.5 10 12 10C13.5 10 14 14 16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8 14C10 14 10.5 10 12 10C13.5 10 14 14 16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         ),
         title: "NeuronMind Approach",
@@ -88,10 +87,10 @@ const caseStudiesData = [
     ],
     workflowImage: ""
   },
-  { 
-    id: 3, 
-    title: "Case Study 3", 
-    description: "Coming soon.", 
+  {
+    id: 3,
+    title: "Case Study 3",
+    description: "Coming soon.",
     cards: [
       {
         type: "problem",
@@ -105,8 +104,8 @@ const caseStudiesData = [
         label: "Solution",
         icon: (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M8 14C10 14 10.5 10 12 10C13.5 10 14 14 16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8 14C10 14 10.5 10 12 10C13.5 10 14 14 16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         ),
         title: "NeuronMind Approach",
@@ -133,13 +132,13 @@ const Industries = () => {
   return (
     <section id="case-studies" className="case-studies-section">
       <Container>
-        
+
         {/* Tabs */}
         <div className="case-tabs-container fade-up">
           <div className="case-tabs">
             {[1, 2, 3].map(num => (
-              <button 
-                key={num} 
+              <button
+                key={num}
                 className={`case-tab ${activeTab === num ? 'active' : ''}`}
                 onClick={() => setActiveTab(num)}
               >
@@ -159,30 +158,21 @@ const Industries = () => {
         {activeStudy.cards.length > 0 && (
           <div className="case-flow-container">
             {activeStudy.cards.map((card, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className={`case-card-wrapper fade-up ${index % 2 === 0 ? 'align-left' : 'align-right'}`}
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
-                
-                {/* SVG Connectors (hidden on last item) */}
+
+                {/* CSS Border Connectors (hidden on last item) */}
                 {index < activeStudy.cards.length - 1 && (
-                  <svg className={`flow-connector connector-${index}`} viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <defs>
-                      <marker id={`arrowhead-${index}`} markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                        <polygon points="0 0, 6 3, 0 6" fill="var(--color-primary-teal)" />
-                      </marker>
-                    </defs>
-                    {index % 2 === 0 ? (
-                       <path className="flow-path" d="M10,20 C50,20 50,80 90,80" fill="none" stroke="var(--color-primary-teal)" strokeWidth="2" strokeDasharray="6 6" markerEnd={`url(#arrowhead-${index})`} />
-                    ) : (
-                       <path className="flow-path" d="M90,20 C50,20 50,80 10,80" fill="none" stroke="var(--color-primary-teal)" strokeWidth="2" strokeDasharray="6 6" markerEnd={`url(#arrowhead-${index})`} />
-                    )}
-                  </svg>
+                  <div className={`css-connector css-connector-${index % 2 === 0 ? 'right' : 'left'}`}>
+                    <div className="arrow-head"></div>
+                  </div>
                 )}
 
                 <div className={`case-card card-${card.type}`}>
-                  
+
                   {/* Left Accent Bar with Rotated Text */}
                   <div className="card-accent-bar">
                     <span className="card-rotated-text">{card.label}</span>
@@ -215,11 +205,6 @@ const Industries = () => {
               </div>
             ))}
           </div>
-        )}
-        
-        {/* Render Workflow Diagram for the first case study */}
-        {activeStudy.id === 1 && (
-          <WorkflowDiagram />
         )}
 
       </Container>
