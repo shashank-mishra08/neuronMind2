@@ -268,26 +268,29 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── EXECUTIVE BRIEFS ─────────────────────────── */}
-      <section className="insights-section bg-[#1a1c20] text-white">
+      <section className="insights-section" style={{ backgroundColor: '#1a1c20', color: '#ffffff' }}>
         <Container>
           <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
             <div className="flex flex-col md:flex-row md:items-end justify-between insights-mb-16">
               <div>
-                <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase insights-mb-4">Quick Reads</span>
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Executive Briefs</h2>
+                <span className="block text-xs font-semibold tracking-[0.2em] uppercase insights-mb-4" style={{ color: '#189a77' }}>Quick Reads</span>
+                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight" style={{ color: '#ffffff' }}>Executive Briefs</h2>
               </div>
-              <p className="text-slate-400 font-light mt-4 md:mt-0 text-sm tracking-wide">TWO-MINUTE READS</p>
+              <p className="font-light mt-4 md:mt-0 text-sm tracking-wide" style={{ color: '#94a3b8' }}>TWO-MINUTE READS</p>
             </div>
             
             <div className="insights-grid-3">
               {executiveBriefs.map((brief, index) => (
-                <div key={index} className="group relative bg-[#24272c] border border-white/5 rounded-2xl p-8 hover:bg-[#2a2d33] transition-colors cursor-pointer">
-                  <h3 className="text-xl font-medium leading-snug mb-8 group-hover:text-[#189a77] transition-colors">
-                    {brief}
+                <div key={index} className="group relative rounded-2xl p-8 hover:bg-[#2a2d33] transition-colors cursor-pointer" style={{ backgroundColor: '#24272c', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <h3 className="text-xl font-medium leading-snug insights-mb-8 transition-colors">
+                    <span className="text-white group-hover:text-[#189a77] transition-colors" style={{ color: 'inherit' }}>
+                      {brief}
+                    </span>
                   </h3>
-                  <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <svg className="w-5 h-5 text-[#189a77]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <div className="flex items-center justify-between transition-colors" style={{ color: '#8a8f99' }}>
+                    <span className="text-sm font-medium tracking-wide uppercase group-hover:text-white transition-colors">Read Brief</span>
+                    <svg className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
                 </div>
