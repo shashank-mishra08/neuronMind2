@@ -213,7 +213,7 @@ const Insights = () => {
       {/* ─────────────────────────── EDITORIAL QUOTE ─────────────────────────── */}
       <section className="insights-section bg-slate-50/30">
         <Container>
-          <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out max-w-4xl mx-auto text-center">
+          <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out" style={{ maxWidth: '896px', margin: '0 auto', textAlign: 'center' }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight tracking-tight text-[#1a1c20]">
               "The next transformation in healthcare will not come from more software.<br className="hidden md:block"/>
               <span className="text-[#646873]">It will come from making existing systems work intelligently together.</span>"
@@ -438,7 +438,7 @@ const Insights = () => {
         </div>
 
         <Container>
-          <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out max-w-4xl mx-auto text-center">
+          <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out" style={{ maxWidth: '896px', margin: '0 auto', textAlign: 'center' }}>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight text-[#1a1c20]">
               Healthcare has already digitized information.<br className="hidden md:block"/>
               <span className="bg-gradient-to-r from-[#189a77] to-[#247ca8] bg-clip-text text-transparent mt-4 block">
