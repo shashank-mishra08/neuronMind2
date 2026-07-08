@@ -298,36 +298,39 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── HEALTHCARE AI GLOSSARY ─────────────────────────── */}
-      <section className="insights-section">
+      <section className="insights-section relative overflow-hidden bg-slate-50/30">
+        {/* Subtle Background Orbs for Glossary Glass Effect */}
+        <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-[#247ca8]/5 rounded-full blur-[120px] -z-10 mix-blend-multiply pointer-events-none -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#189a77]/5 rounded-full blur-[100px] -z-10 mix-blend-multiply pointer-events-none"></div>
+
         <Container>
-          <div className="max-w-3xl mx-auto reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
+          <div className="insights-center-container reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
             <div className="text-center insights-mb-16">
               <span className="block text-xs font-semibold tracking-[0.2em] text-[#247ca8] uppercase insights-mb-4">Definitions</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1a1c20]">Healthcare AI Glossary</h2>
             </div>
-            
-            <div className="border-t border-slate-200">
+            <div className="insights-glossary-container">
               {glossaryTerms.map((item, index) => {
                 const isOpen = openGlossary === index;
                 return (
-                  <div key={index} className="border-b border-slate-200">
+                  <div key={index} className="insights-glossary-item">
                     <button 
-                      className="w-full py-6 flex items-center justify-between text-left focus:outline-none group"
+                      className="w-full flex items-center justify-between text-left focus:outline-none group"
                       onClick={() => setOpenGlossary(isOpen ? null : index)}
                     >
                       <span className={`text-lg md:text-xl font-medium transition-colors ${isOpen ? 'text-[#189a77]' : 'text-[#1a1c20] group-hover:text-[#4a4d55]'}`}>
                         {item.term}
                       </span>
-                      <span className={`ml-6 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#189a77]' : 'text-[#8a8f99]'}`}>
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className={`insights-bubble-icon ${isOpen ? 'active' : ''}`}>
+                        <svg className="w-5 h-5 text-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
-                      </span>
+                      </div>
                     </button>
                     <div 
-                      className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'}`}
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
                     >
-                      <p className="text-[#4a4d55] font-light leading-relaxed text-lg pr-8">
+                      <p className="text-[#4a4d55] font-light leading-relaxed text-lg pr-8 border-t border-slate-200/50 pt-4">
                         {item.def}
                       </p>
                     </div>
