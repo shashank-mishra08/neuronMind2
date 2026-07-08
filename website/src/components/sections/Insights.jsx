@@ -171,24 +171,17 @@ const Insights = () => {
               </div>
             </div>
 
-            {/* Right Column (Abstract Illustration) */}
+            {/* Right Column (Hero Image) */}
             <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 delay-200 ease-out flex justify-center lg:justify-end relative">
               <div className="relative w-full max-w-lg aspect-square">
-                {/* Clean, editorial CSS illustration */}
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white rounded-3xl border border-slate-100/50 shadow-2xl shadow-slate-200/50 flex items-center justify-center overflow-hidden">
-                  <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#189a77]/5 rounded-full blur-3xl mix-blend-multiply"></div>
-                  <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#247ca8]/5 rounded-full blur-3xl mix-blend-multiply"></div>
-
-                  {/* Glass panels */}
-                  <div className="relative w-64 h-40 bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] rotate-[-12deg] translate-y-8 translate-x-8 z-10 animate-[float_8s_ease-in-out_infinite]"></div>
-                  <div className="absolute w-64 h-40 bg-white/30 backdrop-blur-md border border-white/50 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.02)] rotate-[5deg] -translate-y-8 -translate-x-8 animate-[float_9s_ease-in-out_infinite_reverse]"></div>
-
-                  {/* Connection lines */}
-                  <svg className="absolute inset-0 w-full h-full z-20 pointer-events-none opacity-20" viewBox="0 0 100 100">
-                    <path d="M 20 80 Q 50 50 80 20" fill="none" stroke="#2c2e33" strokeWidth="0.2" className="animate-[dash_20s_linear_infinite]" strokeDasharray="2 2" />
-                    <circle cx="20" cy="80" r="1" fill="#189a77" />
-                    <circle cx="80" cy="20" r="1" fill="#247ca8" />
-                  </svg>
+                {/* Premium Hero Image with shadow and subtle float animation */}
+                <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-100/50 animate-[float_8s_ease-in-out_infinite]">
+                  <img 
+                    src="/insights_hero_image.png" 
+                    alt="Future of Healthcare Operations" 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#189a77]/10 to-transparent mix-blend-overlay pointer-events-none"></div>
                 </div>
               </div>
             </div>
