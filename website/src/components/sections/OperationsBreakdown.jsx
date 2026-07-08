@@ -9,9 +9,9 @@ const cards = [
     description: "Healthcare workflows span multiple enterprise platforms that rarely communicate naturally. Information moves between systems through people instead of intelligent coordination.",
   },
   {
-    image: "/image_03.png",
+    image: "/image3.png",
     title: "Manual Coordination",
-    description: "Care teams, billing specialists and administrative staff spend valuable time collecting information, following up across departments and moving work between disconnected systems.",
+    description: "Manual errors and fragmented data lead to a 15% revenue leakage and constant firefighting.",
   },
   {
     image: "/image_04.png",

@@ -73,16 +73,17 @@ const AboutUs = () => {
 
       {/* ─────────────────────────── PART 1 : Editorial Opening ─────────────────────────── */}
       <div className="relative" style={{ padding: '10rem 0 6rem' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 2rem' }}>
-          <div className="grid grid-cols-1 items-center" style={{ gap: '4rem' }}
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ gap: '4rem' }}
           /* 2-col on large screens */
           >
             <style>{`
+              .about-opening-grid { display: grid; grid-template-columns: 1fr; align-items: center; }
               @media (min-width: 1024px) {
                 .about-opening-grid { grid-template-columns: 1.2fr 0.8fr !important; }
               }
             `}</style>
-            <div className="grid grid-cols-1 about-opening-grid items-center" style={{ gap: '5rem' }}>
+            <div className="about-opening-grid" style={{ gap: '5rem' }}>
 
               {/* ── Left: Editorial Text ── */}
               <div data-reveal style={revealStyle(0)}>
@@ -165,7 +166,7 @@ const AboutUs = () => {
               </div>
 
               {/* ── Right: Illustration ── */}
-              <div data-reveal style={revealStyle(0.15)} className="flex items-center justify-center">
+              <div data-reveal style={{ ...revealStyle(0.15), display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div className="relative">
                   <img
                     src="/about-intelligence-layer.png"
@@ -190,8 +191,8 @@ const AboutUs = () => {
 
       {/* ─────────────────────────── PART 2 : Philosophy Cards ─────────────────────────── */}
       <div className="relative" style={{ padding: '2rem 0 4rem' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 2rem' }}>
-          <div className="flex flex-col" style={{ gap: '1.5rem' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
 
             {philosophyCards.map((card, i) => (
               <div
@@ -215,6 +216,7 @@ const AboutUs = () => {
                   .about-card-hover:hover .about-card-img {
                     transform: scale(1.04);
                   }
+                  .about-card-inner { display: grid; grid-template-columns: 1fr; align-items: center; }
                   @media (min-width: 768px) {
                     .about-card-inner { grid-template-columns: 1fr 280px !important; }
                   }
@@ -224,7 +226,7 @@ const AboutUs = () => {
                 `}</style>
 
                 <div
-                  className="about-card-inner grid grid-cols-1 items-center"
+                  className="about-card-inner"
                   style={{ gap: '2rem', padding: 'clamp(1.5rem, 3vw, 3rem)' }}
                 >
                   {/* Card Text */}
@@ -269,10 +271,13 @@ const AboutUs = () => {
                   </div>
 
                   {/* Card Illustration */}
-                  <div className="flex items-center justify-center">
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <div
-                      className="relative flex items-center justify-center overflow-clip"
+                      className="relative overflow-clip"
                       style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         width: '100%',
                         maxWidth: '280px',
                         aspectRatio: '1',
@@ -303,12 +308,15 @@ const AboutUs = () => {
 
       {/* ─────────────────────────── PART 3 : Closing Statement ─────────────────────────── */}
       <div className="relative" style={{ padding: '4rem 0 6rem' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '880px', padding: '0 2rem' }}>
+        <div style={{ maxWidth: '880px', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
 
           {/* Mesh background */}
           <div
-            className="absolute pointer-events-none flex items-center justify-center"
+            className="absolute pointer-events-none"
             style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               top: '-10%',
               left: '-15%',
               right: '-15%',
