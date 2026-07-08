@@ -41,7 +41,6 @@ const Navbar = () => {
         </nav>
 
         <div className="navbar-actions">
-          <a href="/#platform" className="btn btn-secondary btn-sm">Explore Platform</a>
           <Link to="/contact" className="btn btn-primary btn-sm">Book Discovery Call</Link>
         </div>
 
@@ -67,7 +66,6 @@ const Navbar = () => {
           <Link to="/contact" onClick={closeMenu}>Contact</Link>
         </nav>
         <div className="navbar-mobile-actions">
-          <a href="/#platform" className="btn btn-secondary" onClick={closeMenu}>Explore Platform</a>
           <Link to="/contact" className="btn btn-primary" onClick={closeMenu}>Book Discovery Call</Link>
         </div>
       </div>
