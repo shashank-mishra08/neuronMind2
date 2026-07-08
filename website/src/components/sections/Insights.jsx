@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Container from '../layout/Container';
+import './Insights.css';
 
 // --- DATA ---
 const researchCards = [
@@ -162,9 +163,9 @@ const Insights = () => {
     <div className="bg-white min-h-screen text-[#2c2e33] font-sans selection:bg-[#189a77]/20 selection:text-[#189a77]" ref={sectionRef}>
       
       {/* ─────────────────────────── HERO SECTION ─────────────────────────── */}
-      <section className="relative pt-24 pb-32 md:pt-32 md:pb-40 overflow-hidden">
+      <section className="relative insights-hero bg-white">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+          <div className="insights-grid-2">
             
             {/* Left Column */}
             <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out z-10">
@@ -210,7 +211,7 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── EDITORIAL QUOTE ─────────────────────────── */}
-      <section className="py-24 md:py-32 bg-slate-50/30">
+      <section className="insights-section bg-slate-50/30">
         <Container>
           <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight tracking-tight text-[#1a1c20]">
@@ -222,13 +223,13 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── MAIN CONTENT (RESEARCH CARDS) ─────────────────────────── */}
-      <section className="py-24 md:py-32">
+      <section className="insights-section">
         <Container>
-          <div className="space-y-32 md:space-y-48">
+          <div className="insights-space-y-32 md:insights-space-y-48">
             {researchCards.map((card, index) => {
               const isEven = index % 2 === 0;
               return (
-                <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out`}>
+                <div key={index} className={`insights-grid-2 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out`}>
                   
                   {/* Illustration Side */}
                   <div className={`w-full aspect-[4/3] lg:aspect-square ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
@@ -267,18 +268,18 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── EXECUTIVE BRIEFS ─────────────────────────── */}
-      <section className="py-24 bg-[#1a1c20] text-white">
+      <section className="insights-section bg-[#1a1c20] text-white">
         <Container>
           <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+            <div className="flex flex-col md:flex-row md:items-end justify-between insights-mb-16">
               <div>
-                <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase mb-4">Quick Reads</span>
+                <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase insights-mb-4">Quick Reads</span>
                 <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Executive Briefs</h2>
               </div>
               <p className="text-slate-400 font-light mt-4 md:mt-0 text-sm tracking-wide">TWO-MINUTE READS</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="insights-grid-3">
               {executiveBriefs.map((brief, index) => (
                 <div key={index} className="group relative bg-[#24272c] border border-white/5 rounded-2xl p-8 hover:bg-[#2a2d33] transition-colors cursor-pointer">
                   <h3 className="text-xl font-medium leading-snug mb-8 group-hover:text-[#189a77] transition-colors">
@@ -297,11 +298,11 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── HEALTHCARE AI GLOSSARY ─────────────────────────── */}
-      <section className="py-24 md:py-32">
+      <section className="insights-section">
         <Container>
           <div className="max-w-3xl mx-auto reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
-            <div className="text-center mb-16">
-              <span className="block text-xs font-semibold tracking-[0.2em] text-[#247ca8] uppercase mb-4">Definitions</span>
+            <div className="text-center insights-mb-16">
+              <span className="block text-xs font-semibold tracking-[0.2em] text-[#247ca8] uppercase insights-mb-4">Definitions</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1a1c20]">Healthcare AI Glossary</h2>
             </div>
             
@@ -339,32 +340,43 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── FRAMEWORKS ─────────────────────────── */}
-      <section className="py-24 md:py-32 bg-slate-50">
+      <section className="insights-section relative overflow-hidden bg-slate-50/50 z-0">
+        {/* Subtle Background Orbs for Glass Effect */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#189a77]/10 rounded-full blur-[100px] -z-10 mix-blend-multiply pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#247ca8]/10 rounded-full blur-[80px] -z-10 mix-blend-multiply pointer-events-none"></div>
+
         <Container>
-          <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
-            <div className="text-center mb-16">
-              <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase mb-4">Executive Playbooks</span>
+          <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out relative z-10">
+            <div className="text-center insights-mb-16">
+              <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase insights-mb-4">Executive Playbooks</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1a1c20]">Frameworks & Resources</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="insights-grid-3">
               {frameworkCards.map((framework, index) => (
-                <div key={index} className="bg-white rounded-2xl p-8 border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group flex flex-col justify-between min-h-[240px]">
+                <div key={index} className="insights-liquid-glass cursor-pointer group insights-card-inner">
                   <div>
-                    <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mb-6 border border-slate-100 group-hover:bg-[#189a77]/5 group-hover:border-[#189a77]/20 transition-colors">
-                      <svg className="w-4 h-4 text-[#8a8f99] group-hover:text-[#189a77] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 rounded-full bg-white/60 flex items-center justify-center insights-mb-6 border border-slate-200/50 shadow-sm transition-colors duration-300">
+                      <svg className="w-4 h-4 text-[#8a8f99] group-hover:text-[#189a77] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-semibold text-[#1a1c20] leading-snug group-hover:text-[#189a77] transition-colors">
+                    <h3 className="text-xl font-semibold text-[#1a1c20] leading-snug transition-colors duration-300">
                       {framework}
                     </h3>
                   </div>
-                  <div className="text-sm font-semibold tracking-wide text-[#8a8f99] uppercase mt-8 flex items-center">
-                    Explore Framework
-                    <svg className="w-3.5 h-3.5 ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
+                  <div className="insights-mt-8 flex items-center justify-between border-t border-slate-200/50 pt-4 mt-auto">
+                    <span className="text-sm font-semibold tracking-wide text-[#8a8f99] uppercase transition-colors duration-300 group-hover:text-[#1a1c20]">
+                      Explore Framework
+                    </span>
+                    <div className="w-10 h-10 rounded-full bg-white/80 border border-slate-200/80 flex items-center justify-center transition-all duration-500 ease-out group-hover:bg-[#189a77] group-hover:border-[#189a77] group-hover:shadow-[0_0_20px_rgba(24,154,119,0.4)] group-hover:w-12 group-hover:h-12 overflow-hidden relative">
+                      <svg className="w-4 h-4 text-[#8a8f99] transition-all duration-500 ease-out group-hover:-translate-y-8 group-hover:translate-x-8 absolute" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 7L7 17M8 7h9v9" />
+                      </svg>
+                      <svg className="w-4 h-4 text-white transition-all duration-500 ease-out translate-y-8 -translate-x-8 group-hover:translate-y-0 group-hover:translate-x-0 absolute" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 7L7 17M8 7h9v9" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -374,19 +386,19 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── INDUSTRY SIGNALS & WHAT WE'RE EXPLORING ─────────────────────────── */}
-      <section className="py-24 md:py-32">
+      <section className="insights-section">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
+          <div className="insights-grid-2 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
             
             {/* Industry Signals */}
             <div>
-              <h3 className="text-2xl font-semibold tracking-tight text-[#1a1c20] mb-8 border-b border-slate-100 pb-4">
+              <h3 className="text-2xl font-semibold tracking-tight text-[#1a1c20] pb-4 insights-mb-8 border-b border-slate-100">
                 Industry Signals
               </h3>
-              <ul className="space-y-4">
+              <ul className="insights-space-y-4">
                 {industrySignals.map((signal, index) => (
-                  <li key={index} className="flex items-center text-lg text-[#4a4d55] font-light">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#189a77] mr-4 opacity-70"></span>
+                  <li key={index} className="insights-flex-bullet text-lg text-[#4a4d55] font-light">
+                    <span className="insights-bullet-icon bg-[#189a77]"></span>
                     {signal}
                   </li>
                 ))}
@@ -395,13 +407,13 @@ const Insights = () => {
 
             {/* What We're Exploring */}
             <div>
-              <h3 className="text-2xl font-semibold tracking-tight text-[#1a1c20] mb-8 border-b border-slate-100 pb-4">
+              <h3 className="text-2xl font-semibold tracking-tight text-[#1a1c20] pb-4 insights-mb-8 border-b border-slate-100">
                 What We’re Exploring at NeuronMind
               </h3>
-              <ul className="space-y-4">
+              <ul className="insights-space-y-4">
                 {exploringThemes.map((theme, index) => (
-                  <li key={index} className="flex items-center text-lg text-[#4a4d55] font-light">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#247ca8] mr-4 opacity-70"></span>
+                  <li key={index} className="insights-flex-bullet text-lg text-[#4a4d55] font-light">
+                    <span className="insights-bullet-icon bg-[#247ca8]"></span>
                     {theme}
                   </li>
                 ))}
@@ -413,7 +425,7 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── ENDING STATEMENT ─────────────────────────── */}
-      <section className="relative py-32 md:py-48 overflow-hidden">
+      <section className="insights-ending">
         {/* Subtle mesh/radial background */}
         <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center opacity-30">
            <div className="w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(24,154,119,0.05)_0%,_transparent_70%)]"></div>
