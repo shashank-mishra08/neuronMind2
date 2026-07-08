@@ -209,15 +209,15 @@ const Insights = () => {
             {researchCards.map((card, index) => {
               const isEven = index % 2 === 0;
               return (
-                <div key={index} className={`insights-grid-2 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out`}>
+                <div key={index} className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out`}>
 
                   {/* Illustration Side */}
-                  <div className={`w-full aspect-video ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className={`w-full aspect-video ${isEven ? 'lg:col-span-7 lg:order-1' : 'lg:col-span-7 lg:order-2'}`}>
                     {card.illustration}
                   </div>
 
                   {/* Text Side */}
-                  <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                  <div className={`${isEven ? 'lg:col-span-5 lg:order-2' : 'lg:col-span-5 lg:order-1'}`}>
                     <span className="inline-block px-3 py-1 bg-slate-100 text-[#4a4d55] text-xs font-semibold tracking-wider uppercase rounded-full mb-6">
                       {card.category}
                     </span>
