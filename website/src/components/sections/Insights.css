@@ -22,13 +22,13 @@
 }
 
 .insights-ending {
-  padding: 8rem 0;
+  padding: 3rem 0;
   position: relative;
   overflow: hidden;
 }
 @media (min-width: 768px) {
   .insights-ending {
-    padding: 12rem 0;
+    padding: 5rem 0;
   }
 }
 
