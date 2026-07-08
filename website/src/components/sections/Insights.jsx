@@ -59,7 +59,7 @@ const researchCards = [
     readTime: '5 min read',
     illustration: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
-        <img src="/human_centered_wide_1783510553554.png" alt="Human-Centered AI" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        <img src="/human_centered_ai_insight_1783508915986.png" alt="Human-Centered AI" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
