@@ -1,13 +1,15 @@
 import Container from '../layout/Container';
 import { Link } from 'react-router-dom';
+import Insights3DBackground from '../3d/Insights3DBackground';
 import './Hero.css';
 
 const Hero = () => {
   return (
     <>
       <section id="hero" className="hero-section">
+        <Insights3DBackground />
         <div className="hero-bg-pattern"></div>
-        <Container>
+        <Container className="relative z-10">
           <div className="hero-grid">
             <div className="hero-content fade-up">
               <div className="hero-eyebrow">

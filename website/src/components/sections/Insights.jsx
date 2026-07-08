@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Container from '../layout/Container';
+import Insights3DBackground from '../3d/Insights3DBackground';
 import './Insights.css';
 
 // --- DATA ---
@@ -150,35 +151,36 @@ const Insights = () => {
     <div className="bg-white min-h-screen text-[#2c2e33] font-sans selection:bg-[#189a77]/20 selection:text-[#189a77]" ref={sectionRef}>
 
       {/* ─────────────────────────── HERO SECTION ─────────────────────────── */}
-      <section className="relative insights-hero bg-white">
-        <Container>
-          <div className="insights-grid-2">
+      <section className="relative insights-hero bg-[#fcfdfd] overflow-hidden">
+        <Insights3DBackground />
+        <Container className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
             {/* Left Column */}
-            <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out z-10">
-              <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase mb-8">
+            <div className="lg:col-span-5 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out z-10">
+              <span className="block text-[10px] md:text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase mb-4 md:mb-8">
                 Executive Insights
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight text-[#1a1c20] mb-8">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight text-[#1a1c20] mb-5 md:mb-8">
                 Perspectives on the <br className="hidden lg:block" />
                 <span className="bg-gradient-to-r from-[#189a77] to-[#247ca8] bg-clip-text text-transparent">Future of Healthcare</span> <br className="hidden lg:block" />
                 Operations.
               </h1>
-              <div className="text-lg md:text-xl text-[#4a4d55] font-light leading-relaxed max-w-xl space-y-4">
-                <p>Healthcare is entering a new operational era.</p>
-                <p>Agentic AI, intelligent workflow orchestration and enterprise transformation are redefining how providers, payers and healthcare organizations operate.</p>
-                <p>These insights explore the ideas shaping that future.</p>
+              <div className="text-[#4a4d55] font-light leading-relaxed max-w-xl space-y-3 md:space-y-4">
+                <p className="text-sm md:text-lg lg:text-xl">Healthcare is entering a new operational era.</p>
+                <p className="text-sm md:text-lg lg:text-xl">Agentic AI, intelligent workflow orchestration and enterprise transformation are redefining how providers, payers and healthcare organizations operate.</p>
+                <p className="text-sm md:text-lg lg:text-xl">These insights explore the ideas shaping that future.</p>
               </div>
             </div>
 
             {/* Right Column (Hero Image) */}
-            <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 delay-200 ease-out flex justify-center lg:justify-end relative">
-              <div className="relative w-full max-w-lg aspect-square">
+            <div className="lg:col-span-7 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 delay-200 ease-out flex justify-center lg:justify-end relative">
+              <div className="relative w-full aspect-[3/2]">
                 {/* Premium Hero Image with shadow and subtle float animation */}
                 <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-100/50 animate-[float_8s_ease-in-out_infinite]">
-                  <img 
-                    src="/insights_hero_image.png" 
-                    alt="Future of Healthcare Operations" 
+                  <img
+                    src="/insights_hero_image.png"
+                    alt="Future of Healthcare Operations"
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-[#189a77]/10 to-transparent mix-blend-overlay pointer-events-none"></div>
@@ -451,12 +453,12 @@ const Insights = () => {
       {/* Global styles for floating animations */}
       <style>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0) rotate(-12deg); }
-          50% { transform: translateY(-15px) rotate(-10deg); }
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-15px); }
         }
         @keyframes float-reverse {
-          0%, 100% { transform: translateY(0) rotate(5deg); }
-          50% { transform: translateY(15px) rotate(8deg); }
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(15px); }
         }
         @keyframes dash {
           to { stroke-dashoffset: -100; }

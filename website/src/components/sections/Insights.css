@@ -10,8 +10,8 @@
 }
 
 .insights-hero {
-  padding-top: 6rem;
-  padding-bottom: 8rem;
+  padding-top: 6rem; /* Restored to 6rem to clear fixed navbar on mobile */
+  padding-bottom: 3rem;
   overflow: hidden;
 }
 @media (min-width: 768px) {
