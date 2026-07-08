@@ -10,4 +10,5 @@ export { default as OperationalScenarios } from './OperationalScenarios';
 export { default as WhyChooseUs } from './WhyChooseUs';
 export { default as Leadership } from './Leadership';
 export { default as Insights } from './Insights';
+export { default as AboutUs } from './AboutUs';
 export { default as Contact } from './Contact';

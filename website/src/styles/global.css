@@ -1,6 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 @import './design-tokens.css';
 @import './deck.css';
+
+/* Map design-tokens to Tailwind v4 theme so utilities stay in sync */
+@theme {
+  --color-primary-teal: #189a77;
+  --color-primary-blue: #247ca8;
+  --color-primary-light: #48a6b3;
+  --color-muted-teal: #e6f6f2;
+  --color-graphite: #2c2e33;
+  --color-graphite-light: #4a4d55;
+  --color-text-tertiary: #8a8f99;
+  --color-border: #e0e4e8;
+  --color-surface: #f5f6f8;
+  --color-background: #f7fbfb;
+}
+
 
 * {
   box-sizing: border-box;

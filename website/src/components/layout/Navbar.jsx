@@ -36,7 +36,7 @@ const Navbar = () => {
           <a href="/#solutions">Solutions</a>
           <a href="/#why-neuronmind">Why Us</a>
           <a href="/#insights">Insights</a>
-          <a href="/#about">About</a>
+          <Link to="/about">About</Link>
           <Link to="/contact">Contact</Link>
         </nav>
 
@@ -63,7 +63,7 @@ const Navbar = () => {
           <a href="/#solutions" onClick={closeMenu}>Solutions</a>
           <a href="/#why-neuronmind" onClick={closeMenu}>Why Us</a>
           <a href="/#insights" onClick={closeMenu}>Insights</a>
-          <a href="/#about" onClick={closeMenu}>About</a>
+          <Link to="/about" onClick={closeMenu}>About</Link>
           <Link to="/contact" onClick={closeMenu}>Contact</Link>
         </nav>
         <div className="navbar-mobile-actions">
