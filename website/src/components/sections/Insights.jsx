@@ -10,10 +10,9 @@ const researchCards = [
     summary: 'Administrative workflows continue to consume valuable clinical time across providers, payers and operational teams. Modern healthcare organizations must rethink coordination—not simply digitize paperwork—to improve efficiency and patient outcomes.',
     readTime: '6 min read',
     illustration: (
-      <div className="relative w-full h-full bg-slate-50/50 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100">
-        <div className="absolute w-64 h-64 border-[1px] border-[#189a77]/30 rounded-full blur-[1px]"></div>
-        <div className="absolute w-40 h-40 border-[1px] border-[#247ca8]/30 rounded-full translate-x-12 blur-[1px]"></div>
-        <div className="absolute w-80 h-32 bg-gradient-to-r from-transparent via-[#189a77]/10 to-transparent rotate-45"></div>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
+        <img src="/admin_cost_insight_1783508878350.png" alt="Administrative Cost" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
   },
@@ -23,13 +22,9 @@ const researchCards = [
     summary: 'Traditional automation follows predefined rules. Agentic AI understands operational context, reasons across workflows and coordinates complex healthcare processes with human oversight.',
     readTime: '8 min read',
     illustration: (
-      <div className="relative w-full h-full bg-slate-50/50 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100">
-        <div className="absolute w-24 h-24 bg-white/80 shadow-xl backdrop-blur-md border border-white rounded-2xl z-10"></div>
-        <div className="absolute w-20 h-20 bg-white/60 shadow-lg backdrop-blur-md border border-white rounded-2xl -translate-x-16 -translate-y-12"></div>
-        <div className="absolute w-20 h-20 bg-white/60 shadow-lg backdrop-blur-md border border-white rounded-2xl translate-x-16 translate-y-12"></div>
-        <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <path d="M30 40 L50 50 L70 60" stroke="#247ca8" strokeWidth="0.5" fill="none"/>
-        </svg>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
+        <img src="/agentic_ai_insight_1783508887532.png" alt="Agentic Healthcare Operations" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
   },
@@ -39,10 +34,9 @@ const researchCards = [
     summary: 'Enterprise AI success depends on governance, workflow maturity, integration strategy and operational readiness—not simply adopting new technology.',
     readTime: '7 min read',
     illustration: (
-      <div className="relative w-full h-full bg-slate-50/50 rounded-2xl flex flex-col items-center justify-center overflow-hidden border border-slate-100 gap-4">
-        <div className="w-3/4 h-8 bg-white shadow-sm border border-slate-100 rounded-md"></div>
-        <div className="w-2/3 h-8 bg-white shadow-sm border border-slate-100 rounded-md"></div>
-        <div className="w-1/2 h-8 bg-gradient-to-r from-[#189a77]/10 to-transparent border border-[#189a77]/20 rounded-md"></div>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
+        <img src="/enterprise_ready_insight_1783508896664.png" alt="Enterprise Transformation" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
   },
@@ -52,13 +46,9 @@ const researchCards = [
     summary: 'Revenue Cycle Management is evolving from disconnected administrative processes into intelligent operational ecosystems capable of continuous coordination and proactive decision support.',
     readTime: '10 min read',
     illustration: (
-      <div className="relative w-full h-full bg-slate-50/50 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100">
-        <div className="absolute w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#247ca8]/5 via-transparent to-transparent"></div>
-        <div className="w-48 h-48 border-[0.5px] border-slate-300 rounded-full relative flex items-center justify-center">
-           <div className="w-32 h-32 border-[0.5px] border-[#189a77]/40 rounded-full flex items-center justify-center">
-             <div className="w-16 h-16 bg-white shadow-md rounded-full border border-slate-100"></div>
-           </div>
-        </div>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
+        <img src="/revenue_cycle_insight_1783508905849.png" alt="Revenue Cycle Intelligence" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
   },
@@ -68,9 +58,9 @@ const researchCards = [
     summary: 'The future of healthcare belongs to organizations that combine intelligent systems with experienced clinical teams. AI should augment expertise—not replace human judgment.',
     readTime: '5 min read',
     illustration: (
-      <div className="relative w-full h-full bg-slate-50/50 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100">
-        <div className="w-32 h-40 bg-white shadow-lg border border-slate-100 rounded-tr-[40px] rounded-bl-[40px] z-10 translate-x-4"></div>
-        <div className="w-32 h-40 bg-gradient-to-br from-[#189a77]/10 to-[#247ca8]/10 border border-slate-200 rounded-tl-[40px] rounded-br-[40px] -translate-x-4 mix-blend-multiply"></div>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
+        <img src="/human_centered_ai_insight_1783508915986.png" alt="Human-Centered AI" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
   },
@@ -80,12 +70,9 @@ const researchCards = [
     summary: 'Healthcare organizations are moving toward adaptive operational intelligence where existing enterprise systems coordinate seamlessly through autonomous yet governed AI agents.',
     readTime: '9 min read',
     illustration: (
-      <div className="relative w-full h-full bg-slate-50/50 rounded-2xl flex items-center justify-center overflow-hidden border border-slate-100">
-        <div className="grid grid-cols-3 gap-4 p-8 w-full h-full opacity-60">
-          {[...Array(9)].map((_, i) => (
-             <div key={i} className={`rounded-xl border ${i === 4 ? 'bg-[#189a77]/10 border-[#189a77]/30' : 'bg-white border-slate-100 shadow-sm'}`}></div>
-          ))}
-        </div>
+      <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
+        <img src="/future_outlook_insight_1783508926488.png" alt="Healthcare Operating Model" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
   }
@@ -161,20 +148,20 @@ const Insights = () => {
 
   return (
     <div className="bg-white min-h-screen text-[#2c2e33] font-sans selection:bg-[#189a77]/20 selection:text-[#189a77]" ref={sectionRef}>
-      
+
       {/* ─────────────────────────── HERO SECTION ─────────────────────────── */}
       <section className="relative insights-hero bg-white">
         <Container>
           <div className="insights-grid-2">
-            
+
             {/* Left Column */}
             <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out z-10">
               <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase mb-8">
                 Executive Insights
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.1] tracking-tight text-[#1a1c20] mb-8">
-                Perspectives on the <br className="hidden lg:block"/>
-                <span className="bg-gradient-to-r from-[#189a77] to-[#247ca8] bg-clip-text text-transparent">Future of Healthcare</span> <br className="hidden lg:block"/>
+                Perspectives on the <br className="hidden lg:block" />
+                <span className="bg-gradient-to-r from-[#189a77] to-[#247ca8] bg-clip-text text-transparent">Future of Healthcare</span> <br className="hidden lg:block" />
                 Operations.
               </h1>
               <div className="text-lg md:text-xl text-[#4a4d55] font-light leading-relaxed max-w-xl space-y-4">
@@ -191,16 +178,16 @@ const Insights = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-white rounded-3xl border border-slate-100/50 shadow-2xl shadow-slate-200/50 flex items-center justify-center overflow-hidden">
                   <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#189a77]/5 rounded-full blur-3xl mix-blend-multiply"></div>
                   <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#247ca8]/5 rounded-full blur-3xl mix-blend-multiply"></div>
-                  
+
                   {/* Glass panels */}
                   <div className="relative w-64 h-40 bg-white/40 backdrop-blur-md border border-white/60 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)] rotate-[-12deg] translate-y-8 translate-x-8 z-10 animate-[float_8s_ease-in-out_infinite]"></div>
                   <div className="absolute w-64 h-40 bg-white/30 backdrop-blur-md border border-white/50 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.02)] rotate-[5deg] -translate-y-8 -translate-x-8 animate-[float_9s_ease-in-out_infinite_reverse]"></div>
-                  
+
                   {/* Connection lines */}
                   <svg className="absolute inset-0 w-full h-full z-20 pointer-events-none opacity-20" viewBox="0 0 100 100">
-                     <path d="M 20 80 Q 50 50 80 20" fill="none" stroke="#2c2e33" strokeWidth="0.2" className="animate-[dash_20s_linear_infinite]" strokeDasharray="2 2" />
-                     <circle cx="20" cy="80" r="1" fill="#189a77" />
-                     <circle cx="80" cy="20" r="1" fill="#247ca8" />
+                    <path d="M 20 80 Q 50 50 80 20" fill="none" stroke="#2c2e33" strokeWidth="0.2" className="animate-[dash_20s_linear_infinite]" strokeDasharray="2 2" />
+                    <circle cx="20" cy="80" r="1" fill="#189a77" />
+                    <circle cx="80" cy="20" r="1" fill="#247ca8" />
                   </svg>
                 </div>
               </div>
@@ -215,7 +202,7 @@ const Insights = () => {
         <Container>
           <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out" style={{ maxWidth: '896px', margin: '0 auto', textAlign: 'center' }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight tracking-tight text-[#1a1c20]">
-              "The next transformation in healthcare will not come from more software.<br className="hidden md:block"/>
+              "The next transformation in healthcare will not come from more software.<br className="hidden md:block" />
               <span className="text-[#646873]">It will come from making existing systems work intelligently together.</span>"
             </h2>
           </div>
@@ -230,10 +217,10 @@ const Insights = () => {
               const isEven = index % 2 === 0;
               return (
                 <div key={index} className={`insights-grid-2 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out`}>
-                  
+
                   {/* Illustration Side */}
                   <div className={`w-full aspect-[4/3] lg:aspect-square ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                     {card.illustration}
+                    {card.illustration}
                   </div>
 
                   {/* Text Side */}
@@ -278,31 +265,31 @@ const Insights = () => {
               </div>
               <p className="font-light mt-4 md:mt-0 text-sm tracking-wide" style={{ color: '#8a8f99' }}>TWO-MINUTE READS</p>
             </div>
-            
+
             <div className="insights-grid-3">
               {executiveBriefs.map((brief, index) => (
                 <div key={index} className="group relative rounded-2xl p-6 md:p-8 cursor-pointer overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl" style={{ backgroundColor: '#1c1e22', border: '1px solid rgba(255,255,255,0.06)' }}>
                   {/* Subtle hover gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-[#189a77]/0 to-[#189a77]/0 group-hover:from-[#189a77]/10 group-hover:to-transparent transition-all duration-500 ease-out"></div>
-                  
+
                   <div className="relative z-10 flex flex-col h-full justify-between">
                     <div>
                       {/* Top section with Number */}
                       <div className="flex items-center justify-between mb-8">
-                         <span style={{ color: '#4a4d55' }} className="font-mono text-sm tracking-widest font-medium">
-                           {String(index + 1).padStart(2, '0')}
-                         </span>
-                         <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-[#189a77]/20 group-hover:border-[#189a77]/50 transition-colors duration-300">
-                            <svg className="w-3.5 h-3.5 text-white/40 group-hover:text-[#189a77] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                         </div>
+                        <span style={{ color: '#4a4d55' }} className="font-mono text-sm tracking-widest font-medium">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-[#189a77]/20 group-hover:border-[#189a77]/50 transition-colors duration-300">
+                          <svg className="w-3.5 h-3.5 text-white/40 group-hover:text-[#189a77] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
                       </div>
                       <h3 className="text-xl font-medium leading-snug transition-colors duration-300" style={{ color: '#ffffff' }}>
                         {brief}
                       </h3>
                     </div>
-                    
+
                     <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-6">
                       <span className="text-xs font-semibold tracking-widest uppercase transition-colors duration-300" style={{ color: '#8a8f99' }}>Read Brief</span>
                       <div className="w-6 h-6 rounded-full flex items-center justify-center bg-white/5 group-hover:bg-[#189a77] transition-colors duration-300">
@@ -336,7 +323,7 @@ const Insights = () => {
                 const isOpen = openGlossary === index;
                 return (
                   <div key={index} className="insights-glossary-item">
-                    <button 
+                    <button
                       className="w-full flex items-center justify-between text-left focus:outline-none group"
                       onClick={() => setOpenGlossary(isOpen ? null : index)}
                     >
@@ -349,7 +336,7 @@ const Insights = () => {
                         </svg>
                       </div>
                     </button>
-                    <div 
+                    <div
                       className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
                     >
                       <p className="text-[#4a4d55] font-light leading-relaxed text-lg pr-8 border-t border-slate-200/50 pt-4">
@@ -376,7 +363,7 @@ const Insights = () => {
               <span className="block text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase insights-mb-4">Executive Playbooks</span>
               <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-[#1a1c20]">Frameworks & Resources</h2>
             </div>
-            
+
             <div className="insights-grid-3">
               {frameworkCards.map((framework, index) => (
                 <div key={index} className="insights-liquid-glass cursor-pointer group insights-card-inner">
@@ -414,7 +401,7 @@ const Insights = () => {
       <section className="insights-section">
         <Container>
           <div className="insights-grid-2 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
-            
+
             {/* Industry Signals */}
             <div>
               <h3 className="text-2xl font-semibold tracking-tight text-[#1a1c20] pb-4 insights-mb-8 border-b border-slate-100">
@@ -453,13 +440,13 @@ const Insights = () => {
       <section className="insights-ending">
         {/* Subtle mesh/radial background */}
         <div className="absolute inset-0 pointer-events-none -z-10 flex items-center justify-center opacity-30">
-           <div className="w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(24,154,119,0.05)_0%,_transparent_70%)]"></div>
+          <div className="w-[800px] h-[800px] bg-[radial-gradient(circle_at_center,_rgba(24,154,119,0.05)_0%,_transparent_70%)]"></div>
         </div>
 
         <Container>
           <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out" style={{ maxWidth: '896px', margin: '0 auto', textAlign: 'center' }}>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight tracking-tight text-[#1a1c20]">
-              Healthcare has already digitized information.<br className="hidden md:block"/>
+              Healthcare has already digitized information.<br className="hidden md:block" />
               <span className="bg-gradient-to-r from-[#189a77] to-[#247ca8] bg-clip-text text-transparent mt-4 block">
                 The next decade will be about orchestrating intelligence.
               </span>
