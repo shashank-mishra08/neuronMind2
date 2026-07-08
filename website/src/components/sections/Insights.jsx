@@ -268,7 +268,7 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── EXECUTIVE BRIEFS ─────────────────────────── */}
-      <section className="insights-section" style={{ backgroundColor: '#1a1c20', color: '#ffffff' }}>
+      <section className="insights-section" style={{ backgroundColor: '#141517', color: '#ffffff' }}>
         <Container>
           <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out">
             <div className="flex flex-col md:flex-row md:items-end justify-between insights-mb-16">
@@ -276,22 +276,41 @@ const Insights = () => {
                 <span className="block text-xs font-semibold tracking-[0.2em] uppercase insights-mb-4" style={{ color: '#189a77' }}>Quick Reads</span>
                 <h2 className="text-3xl md:text-4xl font-semibold tracking-tight" style={{ color: '#ffffff' }}>Executive Briefs</h2>
               </div>
-              <p className="font-light mt-4 md:mt-0 text-sm tracking-wide" style={{ color: '#94a3b8' }}>TWO-MINUTE READS</p>
+              <p className="font-light mt-4 md:mt-0 text-sm tracking-wide" style={{ color: '#8a8f99' }}>TWO-MINUTE READS</p>
             </div>
             
             <div className="insights-grid-3">
               {executiveBriefs.map((brief, index) => (
-                <div key={index} className="group relative rounded-2xl p-8 hover:bg-[#2a2d33] transition-colors cursor-pointer" style={{ backgroundColor: '#24272c', border: '1px solid rgba(255,255,255,0.05)' }}>
-                  <h3 className="text-xl font-medium leading-snug insights-mb-8 transition-colors">
-                    <span className="text-white group-hover:text-[#189a77] transition-colors" style={{ color: 'inherit' }}>
-                      {brief}
-                    </span>
-                  </h3>
-                  <div className="flex items-center justify-between transition-colors" style={{ color: '#8a8f99' }}>
-                    <span className="text-sm font-medium tracking-wide uppercase group-hover:text-white transition-colors">Read Brief</span>
-                    <svg className="w-5 h-5 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 group-hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                <div key={index} className="group relative rounded-2xl p-6 md:p-8 cursor-pointer overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl" style={{ backgroundColor: '#1c1e22', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  {/* Subtle hover gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#189a77]/0 to-[#189a77]/0 group-hover:from-[#189a77]/10 group-hover:to-transparent transition-all duration-500 ease-out"></div>
+                  
+                  <div className="relative z-10 flex flex-col h-full justify-between">
+                    <div>
+                      {/* Top section with Number */}
+                      <div className="flex items-center justify-between mb-8">
+                         <span style={{ color: '#4a4d55' }} className="font-mono text-sm tracking-widest font-medium">
+                           {String(index + 1).padStart(2, '0')}
+                         </span>
+                         <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-[#189a77]/20 group-hover:border-[#189a77]/50 transition-colors duration-300">
+                            <svg className="w-3.5 h-3.5 text-white/40 group-hover:text-[#189a77] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                         </div>
+                      </div>
+                      <h3 className="text-xl font-medium leading-snug transition-colors duration-300" style={{ color: '#ffffff' }}>
+                        {brief}
+                      </h3>
+                    </div>
+                    
+                    <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-6">
+                      <span className="text-xs font-semibold tracking-widest uppercase transition-colors duration-300" style={{ color: '#8a8f99' }}>Read Brief</span>
+                      <div className="w-6 h-6 rounded-full flex items-center justify-center bg-white/5 group-hover:bg-[#189a77] transition-colors duration-300">
+                        <svg className="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform duration-300" style={{ color: '#ffffff' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
