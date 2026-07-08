@@ -11,7 +11,7 @@ const researchCards = [
     readTime: '6 min read',
     illustration: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
-        <img src="/admin_cost_insight_1783508878350.png" alt="Administrative Cost" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <img src="/admin_cost_wide_1783510512672.png" alt="Administrative Cost" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
@@ -23,7 +23,7 @@ const researchCards = [
     readTime: '8 min read',
     illustration: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
-        <img src="/agentic_ai_insight_1783508887532.png" alt="Agentic Healthcare Operations" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <img src="/agentic_ai_wide_1783510522788.png" alt="Agentic Healthcare Operations" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
@@ -35,7 +35,7 @@ const researchCards = [
     readTime: '7 min read',
     illustration: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
-        <img src="/enterprise_ready_insight_1783508896664.png" alt="Enterprise Transformation" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <img src="/enterprise_ready_wide_1783510531989.png" alt="Enterprise Transformation" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
@@ -47,7 +47,7 @@ const researchCards = [
     readTime: '10 min read',
     illustration: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
-        <img src="/revenue_cycle_insight_1783508905849.png" alt="Revenue Cycle Intelligence" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <img src="/revenue_cycle_wide_1783510541193.png" alt="Revenue Cycle Intelligence" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
@@ -59,7 +59,7 @@ const researchCards = [
     readTime: '5 min read',
     illustration: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
-        <img src="/human_centered_ai_insight_1783508915986.png" alt="Human-Centered AI" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <img src="/human_centered_wide_1783510553554.png" alt="Human-Centered AI" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
@@ -71,7 +71,7 @@ const researchCards = [
     readTime: '9 min read',
     illustration: (
       <div className="relative w-full h-full rounded-2xl overflow-hidden bg-slate-100">
-        <img src="/future_outlook_insight_1783508926488.png" alt="Healthcare Operating Model" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" />
+        <img src="/future_outlook_wide_1783510563664.png" alt="Healthcare Operating Model" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 bg-[#1a1c20]/10 group-hover:bg-transparent transition-colors duration-500"></div>
       </div>
     )
@@ -212,7 +212,7 @@ const Insights = () => {
                 <div key={index} className={`insights-grid-2 reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out`}>
 
                   {/* Illustration Side */}
-                  <div className={`w-full aspect-[4/3] lg:aspect-square ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className={`w-full aspect-video ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
                     {card.illustration}
                   </div>
 
