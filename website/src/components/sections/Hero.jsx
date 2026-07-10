@@ -23,7 +23,6 @@ const Hero = () => {
               </p>
               <div className="hero-cta-row">
                 <Link to="/contact" className="btn btn-primary">Book Discovery Call</Link>
-                <a href="#platform" className="btn btn-secondary">Explore Platform</a>
               </div>
             </div>
             

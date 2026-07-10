@@ -161,7 +161,7 @@ const Insights = () => {
               <span className="block text-[10px] md:text-xs font-semibold tracking-[0.2em] text-[#189a77] uppercase mb-4 md:mb-8">
                 Executive Insights
               </span>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight text-[#1a1c20] mb-5 md:mb-8">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-[#1a1c20] mb-5 md:mb-8">
                 Perspectives on the <br className="hidden lg:block" />
                 <span className="bg-gradient-to-r from-[#189a77] to-[#247ca8] bg-clip-text text-transparent">Future of Healthcare</span> <br className="hidden lg:block" />
                 Operations.
@@ -193,7 +193,7 @@ const Insights = () => {
       </section>
 
       {/* ─────────────────────────── EDITORIAL QUOTE ─────────────────────────── */}
-      <section className="insights-section bg-slate-50/30">
+      <section className="py-12 md:py-20 bg-slate-50/30">
         <Container>
           <div className="reveal-on-scroll opacity-0 translate-y-6 transition-all duration-1000 ease-out" style={{ maxWidth: '896px', margin: '0 auto', textAlign: 'center' }}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight tracking-tight text-[#1a1c20]">
