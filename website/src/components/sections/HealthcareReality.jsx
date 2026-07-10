@@ -146,17 +146,17 @@ const TunnelCard = ({ card, i, total, progress }) => {
     inputs = [0, step];
     scaleOut = [1, 0.85];
     opacityOut = [1, 0];
-    yOut = ['0vh', '-15vh'];
+    yOut = ['0vh', '-8vh'];
   } else if (i === total - 1) {
     inputs = [c - step, 1];
     scaleOut = [1.1, 1];
     opacityOut = [0, 1];
-    yOut = ['15vh', '0vh'];
+    yOut = ['8vh', '0vh'];
   } else {
     inputs = [c - step, c, c + step];
     scaleOut = [1.1, 1, 0.85];
     opacityOut = [0, 1, 0];
-    yOut = ['15vh', '0vh', '-15vh'];
+    yOut = ['8vh', '0vh', '-8vh'];
   }
 
   // WAAPI bounds for hardware acceleration with strict clamping
@@ -195,11 +195,39 @@ const DesktopTunnel = ({ cards }) => {
   });
 
   return (
-    <div className="h-[250vh] relative w-full mt-16" ref={containerRef}>
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {cards.map((card, i) => (
-          <TunnelCard key={i} card={card} i={i} total={cards.length} progress={scrollYProgress} />
-        ))}
+    <div className="h-[250vh] relative w-full" ref={containerRef}>
+      {/* Pinned Viewport: EXACTLY h-screen, containing heading, cards, and footer */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden pt-20 pb-12">
+        
+        {/* Top: Heading */}
+        <Container>
+          <div className="reality-header fade-up !mb-0">
+            <div className="reality-eyebrow">
+              The Reality of Modern Healthcare Operations
+            </div>
+            <h2 className="reality-title">
+              Healthcare Operations Are More Connected Than Ever.<br/>
+              Yet More Fragmented Than Ever.
+            </h2>
+          </div>
+        </Container>
+
+        {/* Middle: Canvas */}
+        <div className="relative flex-1 w-full my-6 min-h-[400px]">
+          {cards.map((card, i) => (
+            <TunnelCard key={i} card={card} i={i} total={cards.length} progress={scrollYProgress} />
+          ))}
+        </div>
+
+        {/* Bottom: Footer */}
+        <Container>
+          <div className="reality-footer fade-up !mt-0">
+            <h3 className="reality-insight">
+              Healthcare has invested in software. What it still lacks is operational coordination.
+            </h3>
+          </div>
+        </Container>
+
       </div>
     </div>
   );
@@ -210,33 +238,37 @@ const HealthcareReality = () => {
 
   return (
     <section id="reality" className="reality-section">
-      <Container>
-        <div className="reality-header fade-up">
-          <div className="reality-eyebrow">
-            The Reality of Modern Healthcare Operations
+      
+      {/* Mobile View: Natural Flow */}
+      <div className="block lg:hidden">
+        <Container>
+          <div className="reality-header fade-up">
+            <div className="reality-eyebrow">
+              The Reality of Modern Healthcare Operations
+            </div>
+            <h2 className="reality-title">
+              Healthcare Operations Are More Connected Than Ever.<br/>
+              Yet More Fragmented Than Ever.
+            </h2>
           </div>
-          <h2 className="reality-title">
-            Healthcare Operations Are More Connected Than Ever.<br/>
-            Yet More Fragmented Than Ever.
-          </h2>
-        </div>
-      </Container>
+        </Container>
 
-      {/* Mobile View: Original Stacking Architecture */}
-      <MobileView cards={cards} activeIndex={activeIndex} setRef={setRef} />
+        <MobileView cards={cards} activeIndex={activeIndex} setRef={setRef} />
 
-      {/* Desktop View: Advanced Z-Axis 3D Tunnel */}
+        <Container>
+          <div className="reality-footer fade-up mt-12">
+            <h3 className="reality-insight">
+              Healthcare has invested in software. What it still lacks is operational coordination.
+            </h3>
+          </div>
+        </Container>
+      </div>
+
+      {/* Desktop View: Unified Sticky Viewport */}
       <div className="hidden lg:block w-full">
         <DesktopTunnel cards={cards} />
       </div>
 
-      <Container>
-        <div className="reality-footer fade-up mt-12">
-          <h3 className="reality-insight">
-            Healthcare has invested in software. What it still lacks is operational coordination.
-          </h3>
-        </div>
-      </Container>
     </section>
   );
 };
