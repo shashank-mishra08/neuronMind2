@@ -1,3 +1,5 @@
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Container from '../layout/Container';
 import useActiveCardIndex from '../../hooks/useActiveCardIndex';
 import './HealthcareReality.css';
@@ -64,6 +66,145 @@ const cards = [
   }
 ];
 
+const CardContent = ({ card }) => (
+  <div className="card-content">
+    <div className="card-left">
+      <span className="card-eyebrow">{card.eyebrow}</span>
+      <h3 className="card-title-gradient">{card.title}</h3>
+      <p className="card-description">{card.description}</p>
+
+      <ul className="card-bullets">
+        {card.bullets.map((bullet, idx) => (
+          <li key={idx}>
+            <CheckmarkIcon />
+            <span>{bullet}</span>
+          </li>
+        ))}
+      </ul>
+
+      <a href="#" className="card-link">
+        {card.linkText} <span className="arrow">→</span>
+      </a>
+    </div>
+    <div className="card-right">
+      <div className="illustration-canvas">
+        <div className="canvas-glow"></div>
+        <img src={`/${card.image}`} alt={card.title} className="card-illustration-image" />
+      </div>
+    </div>
+  </div>
+);
+
+const MobileView = ({ cards, activeIndex, setRef }) => (
+  <div className="reality-cards-wrapper deck-wrap block lg:hidden">
+    <div className="reality-stage deck-stage">
+      {cards.map((card, i) => {
+        const state = i === activeIndex ? 'is-active' : i < activeIndex ? 'is-past' : '';
+        return (
+          <div
+            key={i}
+            className={`reality-card sticky-card deck-card ${state}`}
+            style={{ '--i': i }}
+          >
+            <CardContent card={card} />
+          </div>
+        );
+      })}
+
+      <div className={`deck-scroll-hint ${activeIndex >= cards.length - 1 ? 'is-hidden' : ''}`} aria-hidden="true">
+        <span className="deck-scroll-hint-label">Scroll</span>
+        <span className="deck-scroll-hint-dot">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </span>
+      </div>
+    </div>
+
+    <div className="reality-track deck-track" aria-hidden="true">
+      {cards.map((_, i) => (
+        <span key={i} className="deck-sentinel" ref={setRef(i)} />
+      ))}
+    </div>
+  </div>
+);
+
+const TunnelCard = ({ card, i, total, progress }) => {
+  const c = i / (total - 1);
+  const step = 1 / (total - 1);
+
+  let inputs = [];
+  let scaleOut = [];
+  let opacityOut = [];
+  let yOut = [];
+
+  // Dramatic, Apple-like 3D tunnel math:
+  // Card enters large (1.1) from below (15vh) with 0 opacity.
+  // Lands at center (1.0, 0vh) with full opacity.
+  // Shrinks into background (0.85) and moves up (-15vh) fading to 0.
+  if (i === 0) {
+    inputs = [0, step];
+    scaleOut = [1, 0.85];
+    opacityOut = [1, 0];
+    yOut = ['0vh', '-15vh'];
+  } else if (i === total - 1) {
+    inputs = [c - step, 1];
+    scaleOut = [1.1, 1];
+    opacityOut = [0, 1];
+    yOut = ['15vh', '0vh'];
+  } else {
+    inputs = [c - step, c, c + step];
+    scaleOut = [1.1, 1, 0.85];
+    opacityOut = [0, 1, 0];
+    yOut = ['15vh', '0vh', '-15vh'];
+  }
+
+  // WAAPI bounds for hardware acceleration with strict clamping
+  const scale = useTransform(progress, inputs, scaleOut, { clamp: true });
+  const opacity = useTransform(progress, inputs, opacityOut, { clamp: true });
+  const y = useTransform(progress, inputs, yOut, { clamp: true });
+  const pointerEvents = useTransform(progress, (v) => Math.abs(v - c) < (step * 0.6) ? 'auto' : 'none');
+
+  return (
+    <motion.div
+      className="absolute inset-0 w-full flex items-center justify-center pointer-events-none"
+      style={{
+        scale,
+        opacity,
+        y,
+        zIndex: i + 1,
+        transformOrigin: 'center center'
+      }}
+    >
+      <div className="w-full max-w-[1100px] px-6 pointer-events-auto" style={{ pointerEvents }}>
+        <div className="reality-card sticky-card w-full">
+          <CardContent card={card} />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const DesktopTunnel = ({ cards }) => {
+  const containerRef = useRef(null);
+  
+  // 250vh provides a fast, snappy trackpad experience (less scrolling needed)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end']
+  });
+
+  return (
+    <div className="h-[250vh] relative w-full mt-16" ref={containerRef}>
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {cards.map((card, i) => (
+          <TunnelCard key={i} card={card} i={i} total={cards.length} progress={scrollYProgress} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const HealthcareReality = () => {
   const { activeIndex, setRef } = useActiveCardIndex(cards.length);
 
@@ -79,65 +220,18 @@ const HealthcareReality = () => {
             Yet More Fragmented Than Ever.
           </h2>
         </div>
+      </Container>
 
-        <div className="reality-cards-wrapper deck-wrap">
-          <div className="reality-stage deck-stage">
-            {cards.map((card, i) => {
-              const state = i === activeIndex ? 'is-active' : i < activeIndex ? 'is-past' : '';
-              return (
-                <div
-                  key={i}
-                  className={`reality-card sticky-card deck-card ${state}`}
-                  style={{ '--i': i }}
-                >
-                  <div className="card-content">
-                    <div className="card-left">
-                      <span className="card-eyebrow">{card.eyebrow}</span>
-                      <h3 className="card-title-gradient">{card.title}</h3>
-                      <p className="card-description">{card.description}</p>
+      {/* Mobile View: Original Stacking Architecture */}
+      <MobileView cards={cards} activeIndex={activeIndex} setRef={setRef} />
 
-                      <ul className="card-bullets">
-                        {card.bullets.map((bullet, idx) => (
-                          <li key={idx}>
-                            <CheckmarkIcon />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
+      {/* Desktop View: Advanced Z-Axis 3D Tunnel */}
+      <div className="hidden lg:block w-full">
+        <DesktopTunnel cards={cards} />
+      </div>
 
-                      <a href="#" className="card-link">
-                        {card.linkText} <span className="arrow">→</span>
-                      </a>
-                    </div>
-                    <div className="card-right">
-                      <div className="illustration-canvas">
-                        <div className="canvas-glow"></div>
-                        <img src={`/${card.image}`} alt={card.title} className="card-illustration-image" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-
-            <div className={`deck-scroll-hint ${activeIndex >= cards.length - 1 ? 'is-hidden' : ''}`} aria-hidden="true">
-              <span className="deck-scroll-hint-label">Scroll</span>
-              <span className="deck-scroll-hint-dot">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </span>
-            </div>
-          </div>
-
-          <div className="reality-track deck-track" aria-hidden="true">
-            {cards.map((_, i) => (
-              <span key={i} className="deck-sentinel" ref={setRef(i)} />
-            ))}
-          </div>
-        </div>
-
-        <div className="reality-footer fade-up">
+      <Container>
+        <div className="reality-footer fade-up mt-12">
           <h3 className="reality-insight">
             Healthcare has invested in software. What it still lacks is operational coordination.
           </h3>
