@@ -6,6 +6,7 @@ export { default as IntroducingNeuronMind } from './IntroducingNeuronMind';
 export { default as Solutions } from './Solutions';
 export { default as HowItWorks } from './HowItWorks';
 export { default as Industries } from './Industries';
+export { default as TransformationStories } from './TransformationStories';
 export { default as OperationalScenarios } from './OperationalScenarios';
 export { default as WhyChooseUs } from './WhyChooseUs';
 export { default as Leadership } from './Leadership';

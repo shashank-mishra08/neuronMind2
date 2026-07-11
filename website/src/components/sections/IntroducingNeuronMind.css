@@ -207,21 +207,7 @@
   transform: scale(1.03);
 }
 
-/* --- FOOTER STATEMENT --- */
-.why-footer {
-  text-align: center;
-  padding-top: var(--spacing-12);
-}
 
-.why-closing-statement {
-  font-size: clamp(var(--font-size-2xl), 3vw, var(--font-size-4xl));
-  font-weight: 600;
-  background: linear-gradient(90deg, var(--color-primary-teal), var(--color-primary-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  line-height: 1.4;
-}
 
 /* ---------- Mobile: pinned crossfade deck (positioning from deck.css) ---------- */
 @media (max-width: 1023px) {

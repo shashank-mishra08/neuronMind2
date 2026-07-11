@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import useCountUp from '../../hooks/useCountUp';
 
 /* Smooth-step cubic Hermite interpolation */
 function smoothLerp(progress, inMin, inMax, outMin, outMax) {
@@ -9,6 +10,21 @@ function smoothLerp(progress, inMin, inMax, outMin, outMax) {
   t = t * t * (3 - 2 * t);
   return outMin + t * (outMax - outMin);
 }
+
+const AnimatedMetric = ({ value, suffix, desc, featured }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-50px' });
+  const count = useCountUp(value, inView, 1500);
+
+  return (
+    <div ref={ref} className={`case-metric ${featured ? 'featured' : ''}`}>
+      <div className="metric-value">
+        {count}{suffix}
+      </div>
+      <p className="metric-desc">{desc}</p>
+    </div>
+  );
+};
 
 /* ── Single Card – animates based on its OWN viewport position ── */
 function CinematicCard({ card, index }) {
@@ -80,6 +96,13 @@ function CinematicCard({ card, index }) {
                 </li>
               ))}
             </ul>
+          )}
+          {card.metrics && (
+            <div className="case-metrics-grid">
+              {card.metrics.map((m, i) => (
+                <AnimatedMetric key={i} {...m} />
+              ))}
+            </div>
           )}
         </div>
       </div>

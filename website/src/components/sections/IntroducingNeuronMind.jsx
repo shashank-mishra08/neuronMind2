@@ -101,13 +101,6 @@ const IntroducingNeuronMind = () => {
           </div>
         </div>
 
-        <div className="why-footer fade-up">
-          <p className="why-closing-statement">
-            We don't simply deliver AI.<br/>
-            We engineer intelligent healthcare operations.
-          </p>
-        </div>
-
       </Container>
     </section>
   );
