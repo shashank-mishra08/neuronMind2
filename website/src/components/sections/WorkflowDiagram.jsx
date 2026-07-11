@@ -110,7 +110,7 @@ const WorkflowDiagram = () => {
         const xPx = cx + r * Math.sin(angleRad);
         const yPx = cy - r * Math.cos(angleRad);
         
-        const scale = distance > 2.5 ? 0.5 : 1.15 - (distance * 0.2);
+        const scale = distance > 2.5 ? 0.4 : 0.85 - (distance * 0.15);
         
         style = {
           left: `${(xPx / 400) * 100}%`,

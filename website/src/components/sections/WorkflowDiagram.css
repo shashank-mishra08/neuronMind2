@@ -23,7 +23,7 @@
 .desktop-title {
   position: absolute;
   top: 70%;
-  left: 42%;
+  left: 42%; /* Intentional visual offset */
   transform: translate(-50%, -50%);
   z-index: 5;
 }
@@ -170,10 +170,8 @@
 
   .mobile-title {
     position: absolute;
-    top: 68%;
-    /* Move down slightly */
-    left: 34%;
-    /* Move left slightly */
+    top: 71%;
+    left: 28%; /* Moved even further left */
     transform: translate(-50%, -50%);
     font-size: 36px;
     margin: 0;
@@ -186,13 +184,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: var(--spacing-8); /* Added breathing room */
   }
 
   .mobile-dial-container {
     position: relative;
     width: 100%;
     max-width: 400px;
-    height: 235px;
+    height: 195px; /* Reduced from 235px to pull bottom content up */
     margin: 0 auto;
     overflow: hidden;
   }

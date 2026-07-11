@@ -287,7 +287,7 @@
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   line-height: 1.7;
-  margin-bottom: 0;
+  margin-bottom: var(--spacing-4);
 }
 
 .case-card-bullets {
@@ -305,13 +305,14 @@
   gap: var(--spacing-3);
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .bullet-star {
   color: var(--color-primary-teal);
   font-size: 14px;
   margin-top: 2px;
+  margin-right: 8px; /* Added explicit horizontal spacing */
 }
 
 /* Workflow Diagram */
@@ -521,7 +522,7 @@
   }
 
   .case-card-content {
-    padding: var(--spacing-5) var(--spacing-4);
+    padding: var(--spacing-6) var(--spacing-6); /* Increased horizontal and vertical padding */
   }
 
   .case-card-title {
@@ -530,14 +531,28 @@
 
   .case-card-text,
   .case-card-bullets li {
-    font-size: var(--font-size-sm);
+    font-size: 14px; /* Standardize font size without excessive vertical spacing */
+    line-height: 1.5;
+  }
+  
+  .case-card-bullets {
+    gap: var(--spacing-3);
   }
 
-  /* Slim the vertical label bar so it doesn't dominate narrow cards */
   .card-accent-bar {
     padding: var(--spacing-4) var(--spacing-1);
     font-size: 10px;
     letter-spacing: 0.05em;
+  }
+
+  .case-workflow-diagram {
+    margin-top: var(--spacing-8); /* Reduce from spacing-24 */
+    margin-bottom: 0;
+  }
+
+  .case-closing-footer {
+    padding: var(--spacing-4) 0;
+    margin-top: 0;
   }
 }
 
